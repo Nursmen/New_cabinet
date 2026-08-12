@@ -1,0 +1,965 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Taxpayer Cabinet Mockup</title>
+  <style>
+    :root{--blue:#3492dd;--ink:#182848;--muted:#8998b6;--line:#e4e9f1;--soft:#dceafc}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#f5f5f5;color:var(--ink);font-family:Arial,Helvetica,sans-serif;font-size:13px}button{font:inherit;border:0;cursor:default}
+    .app{min-height:100vh}.main{width:100%}.topbar{height:74px;background:linear-gradient(110deg,#3f84d2,#0fcce1,#358fd8);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 36px}.toplinks{display:flex;gap:27px;align-items:center;white-space:nowrap;font-weight:600;font-size:12px}.account{display:flex;align-items:center;gap:10px;min-width:300px;justify-content:flex-end}.account>b{padding:11px 9px;background:#60bbea;border-radius:8px}.account div{max-width:220px}.account strong,.account small{display:block;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .welcome{height:124px;background:linear-gradient(110deg,#3a87d8,#10cadf,#3891d8);color:white;padding:13px 22px 22px 24px;display:flex;justify-content:space-between;align-items:flex-start}.welcome h1{font-size:19px;margin:0 0 7px;font-weight:600}.welcome p{margin:0;font-size:12px}.rating{background:#72c6e8;padding:5px 9px;border-radius:3px}.welcome button{color:#328afa;background:white;padding:10px 16px;border-radius:6px}
+    .dashboard{margin-top:-39px;padding:0 28px 28px}.content{display:flex;flex-direction:column;gap:22px}.panel{border-radius:8px;background:#fff;box-shadow:0 5px 16px rgba(32,56,91,.05)}.top-grid{display:grid;grid-template-columns:minmax(300px,.58fr) minmax(640px,1.42fr);gap:18px;align-items:stretch}
+    .services{padding:22px 24px;background:#d8e9ff}.services-head{height:auto;margin-bottom:16px}.services-head h2{font-size:20px;margin:0}.services-head p{font-size:11px;color:#637797;margin:6px 0 0}.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.service-card{min-height:116px;padding:16px 17px;background:#fff;border-radius:6px}.service-card h3{font-size:13px;line-height:1.4;margin:0 0 8px;font-weight:700;color:#071b43}.service-card p{font-size:10px;line-height:1.55;color:#70809d;margin:0}.service-card.journals{grid-column:1/-1;min-height:66px;display:flex;align-items:center;justify-content:center;width:100%;cursor:pointer;transition:background .15s,box-shadow .15s}.service-card.journals:hover{background:#f7fbff;box-shadow:0 4px 12px rgba(52,146,221,.12)}.service-card.journals h3{margin:0;font-size:15px;color:#071b43}
+    .side-tools{display:flex;flex-direction:column;gap:14px;min-height:100%}.balance{padding:14px;background:#d8e9ff}.balance-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.balance-head h2{font-size:15px;margin:0}.balance-head h2 span{color:#3b91f1;font-size:19px}.balance-head button{background:#061a43;color:#fff;padding:9px 14px;border-radius:5px;font-size:11px;font-weight:700}.balance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.balance-grid article{min-height:100px;position:relative;padding:11px 9px;background:#fff;border-radius:5px;overflow:hidden}.balance-grid article:after{content:"₢";position:absolute;right:6px;bottom:-8px;color:#e5f0ff;font-size:57px}.round-icon{width:30px;height:30px;border-radius:50%;background:#d8eaff;color:#398fee;display:grid;place-items:center;font-size:14px}.balance-grid i{position:absolute;right:8px;top:8px;font-style:normal;color:#1b304c}.balance-grid strong,.balance-grid small{display:block;position:relative;z-index:1}.balance-grid strong{font-size:15px;margin-top:9px;white-space:nowrap}.balance-grid small{font-size:9px;margin-top:3px}
+    .action-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.action-button{height:84px;border-radius:7px;background:#dfeef1;color:#071b43;font-size:13px;font-weight:700;padding:12px;box-shadow:none}.action-button.payment{background:#dfeef1}.calendar{min-height:170px;display:grid;place-items:center;background:#dfeef1;border:0;border-radius:7px;color:#071b43;font-size:24px;font-weight:700;letter-spacing:3px}
+    .obligations{overflow:hidden;background:#fff}.section-head{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line)}.section-head h2{font-size:15px;margin:0;color:#071b43}.section-head>span{font-size:10px;color:#61708c}.ob-row{display:grid;grid-template-columns:112px minmax(220px,1fr) 58px 78px 30px;gap:12px;align-items:center;min-height:58px;padding:8px 18px;border-bottom:1px solid var(--line);font-size:10px}.ob-row strong,.ob-row small{display:block}.ob-row strong{font-weight:600;line-height:1.35;color:#071b43}.ob-row small{color:#72819e;font-size:8px;margin-top:4px;line-height:1.25}.ob-row>div:nth-last-of-type(-n+2){text-align:center}.ob-row button{width:30px;height:30px;background:#f1f5fa;border-radius:7px;color:#6a7a96;font-size:17px;display:grid;place-items:center}.ob-row button:hover{background:#e4edf8;color:#318bea}.more{text-align:right;background:#f0f9ff;color:#388bea;padding:8px 14px;font-size:9px}
+    .property{padding:20px 22px;background:#fff}.property>h2{font-size:18px;margin:0 0 15px}.property-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.property-card{min-height:150px;background:#dce9f9;border-radius:7px;padding:22px 24px;position:relative;overflow:hidden}.property-card h3{font-size:15px;margin:0 0 7px}.property-card p{font-size:11px;line-height:1.5;color:#70809f;max-width:72%;margin:0}.property-card button{position:absolute;left:24px;bottom:20px;background:#3c4d70;color:#fff;border-radius:4px;padding:9px 16px;font-size:10px;font-weight:700}.property-art{position:absolute;right:18px;bottom:19px;font-size:44px;color:#395273;opacity:.85}
+    .correspondence{padding:20px 22px;background:#fff}.correspondence>h2{font-size:18px;margin:0 0 15px}.correspondence-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.correspondence-card{min-height:184px;background:#e1f0f2;border-radius:7px;padding:24px 24px 64px;position:relative;overflow:hidden}.correspondence-card h3{font-size:17px;line-height:1.25;margin:0 0 7px;color:#071b43}.correspondence-card p{font-size:11px;line-height:1.5;color:#263c5d;max-width:82%;margin:0}.correspondence-card a{position:absolute;left:24px;bottom:20px;background:#061a43;color:#fff;text-decoration:none;border-radius:5px;padding:10px 16px;font-size:11px;font-weight:700}.correspondence-art{position:absolute;right:20px;bottom:20px;font-size:39px;color:#2392ec}.correspondence-card.featured{grid-column:span 2}
+    .patents,.all-services{padding:20px 22px;background:#fff}.patents>h2,.all-services>h2{font-size:18px;margin:0 0 15px}.patent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.patent-card{min-height:156px;background:#dce9f9;border-radius:7px;padding:22px 24px 62px;position:relative}.patent-card h3{font-size:16px;margin:0 0 7px;color:#071b43}.patent-card p{font-size:11px;line-height:1.5;color:#70809f;max-width:78%;margin:0}.patent-card button{position:absolute;left:24px;bottom:19px;background:#061a43;color:#fff;border-radius:5px;padding:9px 16px;font-size:10px;font-weight:700}.patent-art{position:absolute;right:20px;bottom:19px;font-size:38px;color:#278fe8}
+    .personal-info{background:#dce9f9;border-radius:7px;padding:18px 20px;margin-bottom:16px}.personal-info h3{font-size:15px;margin:0 0 13px}.personal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.personal-card,.general-service-card{background:#fff;border-radius:6px;padding:15px 16px}.personal-card{min-height:110px}.card-mark{display:grid;grid-template-columns:repeat(2,8px);gap:3px;width:max-content;margin-bottom:10px}.card-mark i{width:8px;height:8px;background:#50a0f6;border-radius:2px}.card-mark i:nth-child(2),.card-mark i:nth-child(3){background:#a5d3ff}.personal-card h4{font-size:12px;line-height:1.35;margin:0;color:#24375c}.general-services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.general-service-card{min-height:132px;background:#e3eef8}.general-service-card:nth-child(3n+2){background:#e4f1e6}.general-service-card:nth-child(3n){background:#e8eafb}.general-service-card h3{font-size:14px;line-height:1.35;margin:0 0 9px;color:#435675}.general-service-card p{font-size:11px;line-height:1.5;color:#7888aa;margin:0}
+    .journal-view{padding:24px 28px 40px;background:#f5f5f5;min-height:calc(100vh - 74px)}.journal-view[hidden]{display:none}.journal-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:14px}.journal-title-block{display:flex;align-items:center;gap:12px;min-width:0}.journal-back{width:36px;height:36px;border-radius:6px;background:#fff;color:#318bea;font-size:20px;display:grid;place-items:center;box-shadow:0 2px 8px rgba(32,56,91,.07);cursor:pointer}.journal-title-block h1{font-size:18px;margin:0;color:#071b43}.journal-title-block p{font-size:10px;color:#8998b6;margin:5px 0 0}.journal-control{display:flex;flex-direction:column;gap:6px}.journal-control label{font-size:9px;font-weight:700;color:#7d8cab;text-transform:uppercase}.journal-control select{height:38px;border:1px solid #dfe5ee;border-radius:6px;background:#fff;color:#1d3156;padding:0 34px 0 12px;font:inherit;cursor:pointer;outline:none}.journal-control select:focus{border-color:#3492dd;box-shadow:0 0 0 3px rgba(52,146,221,.12)}.journal-group-control{width:min(360px,38vw)}.journal-item-bar{display:grid;grid-template-columns:auto minmax(320px,1fr);align-items:center;gap:18px;padding:15px 18px;background:#fff;border-radius:8px 8px 0 0;border-bottom:1px solid #e8ecf2}.journal-item-bar strong{font-size:13px;color:#071b43;white-space:nowrap}.journal-item-control{width:100%}.journal-card{background:#fff;border-radius:8px;box-shadow:0 5px 16px rgba(32,56,91,.05);overflow:hidden}.journal-table-head{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid #e8ecf2}.journal-table-head h2{font-size:14px;margin:0;color:#071b43}.journal-table-head span{font-size:10px;color:#71809d}.journal-table-scroll{overflow-x:auto}.journal-table{width:100%;min-width:1420px;border-collapse:collapse;table-layout:fixed}.journal-table th{height:58px;padding:10px 8px;text-align:left;color:#8998b6;font-size:8px;text-transform:uppercase;line-height:1.35;vertical-align:bottom;border-bottom:1px solid #e8ecf2}.journal-table td{height:48px;padding:8px;color:#18345f;font-size:9px;border-bottom:1px dashed #e5e9f0;vertical-align:middle}.journal-table th:first-child,.journal-table td:first-child{padding-left:20px;width:54px}.journal-table th:nth-child(2){width:120px}.journal-table th:nth-child(3){width:140px}.journal-table th:nth-child(4){width:170px}.journal-table th:nth-child(5){width:80px}.journal-table th:nth-child(6){width:180px}.journal-table th:nth-child(7){width:130px}.journal-table th:nth-child(8){width:130px}.journal-table th:nth-child(9),.journal-table th:nth-child(10),.journal-table th:nth-child(11){width:145px}.journal-table th:last-child{width:110px}.journal-status{display:inline-flex;align-items:center;padding:4px 7px;border-radius:4px;font-size:8px;font-weight:600;white-space:nowrap}.journal-status.accepted{background:#e4faef;color:#19a963}.journal-status.pending{background:#f1f3f6;color:#18345f}.journal-status.rejected{background:#fff0f2;color:#e54862}.journal-action{height:30px;padding:0 13px;border-radius:5px;background:#f0f2f5;color:#3d4d6b;font-size:9px;cursor:pointer}.journal-action:hover{background:#e1e7ef}.journal-empty{padding:54px 20px;text-align:center;color:#8998b6}.journal-count{font-variant-numeric:tabular-nums}
+    @media(max-width:1100px){.top-grid{grid-template-columns:1fr}.property-grid,.correspondence-grid,.patent-grid,.general-services-grid{grid-template-columns:1fr 1fr}.personal-grid{grid-template-columns:1fr 1fr}.property-card:last-child{grid-column:1/-1}.correspondence-card.featured{grid-column:auto}}
+    @media(max-width:700px){.topbar{padding:0 14px}.account div{display:none}.welcome{padding:18px 14px 55px;height:auto;min-height:120px}.dashboard{padding:0 10px 16px;margin-top:-35px}.top-grid,.services-grid,.action-grid,.balance-grid,.property-grid,.correspondence-grid,.patent-grid,.personal-grid,.general-services-grid{grid-template-columns:1fr}.service-card.journals,.property-card:last-child{grid-column:auto}.ob-row{grid-template-columns:90px 1fr 50px}.ob-row>div:nth-of-type(3),.ob-row>button{display:none}.calendar{min-height:160px;font-size:22px}.journal-view{padding:16px 10px 28px}.journal-heading{align-items:stretch;flex-direction:column}.journal-group-control{width:100%}.journal-item-bar{grid-template-columns:1fr;gap:10px}.journal-title-block h1{font-size:16px}}
+  </style>
+  <style>
+.tc-hide-scroll::-webkit-scrollbar{display:none}
+.tc-hide-scroll{-ms-overflow-style:none;scrollbar-width:none}
+@keyframes tcFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes tcSlideDown{from{opacity:0;max-height:0}to{opacity:1;max-height:500px}}
+@keyframes tcNumIn{from{opacity:0;transform:scale(0.85)}to{opacity:1;transform:scale(1)}}
+@keyframes tcContentIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes tcFlashIn{0%{opacity:1;filter:blur(0)}15%{opacity:1;filter:blur(8px)}50%{opacity:1;filter:blur(8px)}100%{opacity:1;filter:blur(0)}}
+@keyframes tcNumFlash{0%{opacity:1;transform:scale(1)}15%{opacity:1;transform:scale(1.1)}50%{opacity:1;transform:scale(1.1)}70%{opacity:0;transform:scale(0.9)}100%{opacity:0;transform:scale(0.9)}}
+@keyframes tcListReveal{0%{opacity:0;transform:translateY(12px)}60%{opacity:0;transform:translateY(12px)}100%{opacity:1;transform:translateY(0)}}
+
+/* Month strip */
+.tc-month-strip-wrap{background:#fff;border-bottom:1px solid #E5E7EB;padding:10px 40px}
+.tc-month-strip{display:flex}
+.tc-mc{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;border-radius:8px;user-select:none;cursor:pointer;transition:all .2s;margin:0}
+.tc-mc:hover{background:#F3F4F6}
+.tc-mc:hover .tc-mc-full{transform:scale(1.15);display:inline-block}
+.tc-mc .tc-mc-full{font-size:13px;font-weight:500;color:#374151;transition:all .2s}
+.tc-mc .tc-mc-dot{width:6px;height:6px;border-radius:50%;background:transparent;transition:all .2s}
+.tc-mc.active{background:#B0E4CC}
+.tc-mc.active .tc-mc-full{color:#fff;font-weight:700}
+.tc-mc.cur .tc-mc-full{color:#3D9970;font-weight:600}
+.tc-mc.tc-mc-has-dl .tc-mc-dot{background:#34D399}
+.tc-mc.active .tc-mc-dot{background:transparent}
+.tc-mc.active.tc-mc-has-dl .tc-mc-dot{background:rgba(255,255,255,0.6)}
+
+/* Hero - content area */
+.tc-hero{padding:0;flex:1;display:flex;flex-direction:column;position:relative;overflow:visible;min-height:0}
+.tc-hero.tc-anim .tc-hero-inner{animation:tcFlashIn .8s ease forwards}
+.tc-hero.tc-anim .tc-hero-flash-num{animation:tcNumFlash .8s ease forwards;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:120px;font-weight:800;color:#3D9970;z-index:2;pointer-events:none}
+.tc-hero.tc-anim .tc-hero-list-wrap{animation:tcListReveal .8s ease forwards}
+.tc-hero-inner{width:100%;display:flex;flex-direction:column;flex:1;min-height:0}
+.tc-hero-list-wrap{width:100%;display:flex;flex-direction:column;flex:1;min-height:0;overflow-y:auto;padding:12px 16px}
+.tc-hero-list-wrap.tc-empty{align-items:center;justify-content:center;text-align:center}
+.tc-hero-status{font-size:20px;font-weight:600;color:#10B981;margin-bottom:12px}
+.tc-hero-status.has-tax{color:#3D9970}
+.tc-hero-count{display:inline-block;background:#E8F8F0;color:#3D9970;font-size:12px;font-weight:700;padding:3px 12px;border-radius:20px;margin-bottom:8px;align-self:center;text-align:center}
+.tc-hero-count.zero{background:#F0FDF4;color:#16A34A;font-size:16px;padding:6px 18px}
+/* Hidden elements for v2 */
+.tc-hero-date{display:none}
+.tc-hero-weekday{display:none}
+.tc-hero-num{display:none}
+
+/* Tax list in hero */
+.tc-tax-list{text-align:left;width:100%;overflow:visible;padding-top:2px}
+.tc-tax-item{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border:1px solid #E5E7EB;border-radius:10px;background:#fff;transition:background .1s;margin-bottom:6px}
+.tc-tax-item:last-child{margin-bottom:0}
+.tc-tax-item:hover{background:#FAFBFC}
+.tc-tax-item .tc-ti-icon{width:8px;height:8px;border-radius:50%;background:#B0E4CC;margin-top:5px;flex-shrink:0}
+.tc-tax-item .tc-ti-icon.agent{background:#0EA5E9}
+.tc-tax-item .tc-ti-name{font-size:13px;font-weight:600;color:#1F2937;line-height:1.4;display:inline}
+.tc-tax-item .tc-ti-form{font-size:11px;font-weight:600;color:#6B7280;margin-top:2px;cursor:help;display:inline-block}
+.tc-tax-item .tc-ti-form.tc-has-info{color:#3D9970;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px}
+.tc-tax-item .tc-ti-form.tc-has-info:hover{color:#065F46}
+.tc-tax-item .tc-ti-form:hover{color:#374151}
+.tc-tax-item .tc-ti-meta{font-size:11px;color:#9CA3AF;margin-top:1px}
+.tc-ti-tip-fixed{display:none;position:fixed;background:#1F2937;color:#fff;font-size:11px;font-weight:400;padding:8px 12px;border-radius:8px;width:240px;line-height:1.4;box-shadow:0 4px 12px rgba(0,0,0,0.15);z-index:9999;pointer-events:none}
+
+
+/* Calendar root needs relative for overlay positioning */
+#tcCalendarRoot{position:relative;display:flex;flex-direction:column;height:100%}
+
+/* Settings buttons pinned bottom-left */
+.tc-topbtns{display:flex;gap:6px;position:absolute;bottom:12px;right:16px;z-index:5}
+.tc-topbtn{padding:6px 14px;border:1px solid #E5E7EB;border-radius:8px;background:#fff;font-size:11px;font-weight:500;cursor:pointer;font-family:inherit;color:#6B7280;display:inline-flex;align-items:center;gap:4px;transition:all .15s;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.tc-topbtn:hover{background:#F9FAFB;border-color:#D1D5DB}
+.tc-topbtn .tc-fbadge{font-size:9px;background:#34D399;color:#fff;border-radius:10px;padding:0 5px;font-weight:600;line-height:1.5}
+.tc-topbtn .tc-et-label{font-weight:700;color:#3D9970}
+
+/* Overlay panels */
+.tc-ov-pill{padding:6px 14px;border:1px solid #E5E7EB;border-radius:8px;background:#fff;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;color:#6B7280;transition:all .15s}
+.tc-ov-pill:hover{background:#F9FAFB;border-color:#D1D5DB}
+.tc-ov-pill.active{background:#B0E4CC;color:#fff;border-color:#3D9970;font-weight:700}
+.tc-ov-pill.active-v{background:#059669;color:#fff;border-color:#059669;font-weight:700}
+.tc-ov-section{margin-bottom:14px}
+.tc-ov-section-title{font-size:11px;font-weight:600;color:#9CA3AF;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.tc-ov-row{display:flex;gap:4px;flex-wrap:wrap}
+
+/* Overlay backdrop */
+.tc-overlay{position:absolute;top:0;left:0;right:0;bottom:0;z-index:20;background:rgba(255,255,255,0.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:flex-start;justify-content:flex-end;padding:50px 16px 16px}
+.tc-filter-panel{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;width:320px;max-height:80%;overflow-y:auto;box-shadow:0 8px 30px rgba(0,0,0,0.12);animation:tcFadeIn 0.15s ease}
+.tc-filter-panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.tc-filter-panel-head span{font-size:13px;font-weight:700;color:#111827}
+.tc-filter-close{width:28px;height:28px;border:none;border-radius:6px;background:#F3F4F6;color:#6B7280;font-size:16px;cursor:pointer;font-family:inherit;display:flex;align-items:center;justify-content:center;transition:all .1s}
+.tc-filter-close:hover{background:#E5E7EB;color:#111}
+.tc-filter-reset{font-size:11px;color:#3D9970;background:none;border:none;cursor:pointer;font-family:inherit;font-weight:500;margin-right:8px}
+.tc-filter-tags{display:flex;flex-wrap:wrap;gap:4px}
+.tc-filter-tag{padding:5px 11px;border-radius:8px;border:1px solid;font-size:11px;font-weight:500;cursor:pointer;font-family:inherit;transition:all .15s}
+.tc-filter-tag.on{background:#E8F8F0;border-color:#C2EDD6;color:#3D9970}
+.tc-filter-tag.off{background:#F9FAFB;border-color:#E5E7EB;color:#9CA3AF;text-decoration:line-through;opacity:0.5}
+.tc-filter-count{font-size:10px;color:#9CA3AF;margin-top:8px}
+
+/* Day strip */
+.tc-day-strip-wrap{background:#F9FAFB;border-top:1px solid #E5E7EB;padding:8px 0}
+.tc-strip-rel{position:relative}
+.tc-fade-l,.tc-fade-r{position:absolute;top:0;bottom:0;width:16px;z-index:2;pointer-events:none}
+.tc-fade-l{left:0;background:linear-gradient(to right,#F9FAFB,transparent)}
+.tc-fade-r{right:0;background:linear-gradient(to left,#F9FAFB,transparent)}
+.tc-day-strip{display:flex;gap:0;overflow-x:scroll;overflow-y:hidden;padding:0 14px;cursor:grab}
+.tc-day-cell{display:flex;flex-direction:column;align-items:center;gap:2px;padding:5px 0 7px;width:38px;min-width:38px;border-radius:8px;user-select:none;cursor:pointer;transition:background .1s}
+.tc-day-cell:hover{background:rgba(0,0,0,0.04)}
+.tc-day-cell .tc-wd{font-size:9px;font-weight:500;color:#9CA3AF}
+.tc-day-cell .tc-wd.tc-we{color:#D1D5DB}
+.tc-day-cell .tc-dn{font-size:15px;font-weight:400;color:#374151}
+.tc-day-cell .tc-dot{width:16px;height:3px;border-radius:2px;background:transparent;margin-top:1px}
+.tc-day-cell.tc-has-dl .tc-dot{background:#34D399}
+.tc-day-cell.tc-has-dl .tc-dn{font-weight:700;color:#10B981}
+.tc-day-cell.tc-today{background:transparent;border:2px solid #B0E4CC;padding:3px 0 5px}
+.tc-day-cell.tc-today .tc-wd{color:#3D9970}
+.tc-day-cell.tc-today .tc-dn{color:#3D9970;font-weight:600}
+.tc-day-cell.tc-today.tc-has-dl .tc-dot{background:#34D399}
+.tc-day-cell.tc-selected{background:#B0E4CC}
+.tc-day-cell.tc-selected .tc-wd{color:rgba(255,255,255,0.7)}
+.tc-day-cell.tc-selected .tc-dn{color:#fff;font-weight:700}
+.tc-day-cell.tc-selected .tc-dot{background:transparent}
+.tc-day-cell.tc-selected.tc-has-dl .tc-dot{background:rgba(255,255,255,0.6)}
+.tc-day-cell.tc-warn .tc-dot{background:#6EE7B7}
+.tc-day-cell.tc-warn .tc-dn{color:#065F46;font-weight:500}
+.tc-day-cell.tc-selected.tc-warn{background:#34D399}
+.tc-day-cell.tc-selected.tc-warn .tc-dot{background:rgba(255,255,255,0.5)}
+.tc-day-cell.tc-past{opacity:0.3}
+
+/* Next deadline button */
+.tc-next-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border:none;border-radius:10px;background:linear-gradient(135deg,#B0E4CC,#7DCBA8);color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s;box-shadow:0 2px 8px rgba(176,228,204,0.4);margin:8px 0}
+.tc-next-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(176,228,204,0.5)}
+.tc-next-btn .tc-arrow{font-size:16px}
+
+/* Hero warning hint */
+.tc-hero-warn{font-size:13px;font-weight:600;color:#059669;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:6px}
+.tc-hero-warn .tc-warn-icon{font-size:16px}
+.calendar.calendar-expanded{display:block;place-items:initial;min-height:700px;background:#F7F8FA;border:0;border-radius:8px;color:#1F2937;font-size:13px;font-weight:400;letter-spacing:0;overflow:hidden}.calendar.calendar-expanded #tcCalendarRoot{width:100%}.calendar.calendar-expanded .tc-month-strip-wrap{border-radius:8px 8px 0 0}
+
+/* Typography and surface refresh. Section order and grid placement stay unchanged. */
+html,body{background:#f2f5f9;font-family:"Segoe UI",Arial,sans-serif;font-size:14px;color:#14284a}
+.topbar{height:78px;padding:0 32px;box-shadow:0 1px 0 rgba(255,255,255,.18)}
+.toplinks{font-size:13px}.account strong,.account small{font-size:12px}.account>b{font-size:13px}
+.welcome{height:136px;padding:18px 28px 24px}.welcome h1{font-size:22px;margin-bottom:9px}.welcome p{font-size:13px;line-height:1.55}.rating{padding:6px 10px}
+.dashboard{margin-top:-44px;padding:0 28px 34px}.content{gap:24px}.panel{border:1px solid #e2e8f0;box-shadow:0 7px 20px rgba(32,56,91,.06)}
+.services{padding:24px 25px;background:#dceafb}.services-head{margin-bottom:18px}.services-head h2{font-size:22px}.services-head p{font-size:12px;line-height:1.5}.services-grid{gap:15px}.service-card{min-height:126px;padding:18px;background:#fff;border:1px solid rgba(126,160,201,.16);text-align:left;transition:transform .15s,box-shadow .15s}.service-card:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(40,83,130,.08)}.service-card h3{font-size:14px;line-height:1.45;margin-bottom:9px}.service-card p{font-size:11.5px;line-height:1.6}.service-card.journals{min-height:72px}.service-card.journals h3{font-size:16px}
+.side-tools{gap:15px}.balance{padding:16px;background:#dceafb}.balance-head{margin-bottom:14px}.balance-head h2{font-size:17px}.balance-head h2 span{font-size:21px}.balance-head button{padding:10px 17px;font-size:12px;cursor:pointer}.balance-grid{gap:10px}.balance-grid article{min-height:108px;padding:13px 11px}.balance-grid strong{font-size:17px;margin-top:10px}.balance-grid small{font-size:10px}.round-icon{width:34px;height:34px;font-size:15px}
+.section-head{height:60px;padding:0 20px}.section-head h2{font-size:17px}.section-head>span{font-size:11px}.ob-row{grid-template-columns:118px minmax(220px,1fr) 60px 82px 32px;min-height:62px;padding:9px 20px;font-size:11px}.ob-row small{font-size:9px}.ob-row button{width:32px;height:32px;cursor:pointer}.more{padding:9px 16px;font-size:10px}
+.action-button{height:72px;border:1px solid #cfe2f6;background:#edf6ff;color:#174b7c;font-size:15px;cursor:pointer;transition:transform .15s,box-shadow .15s}.action-button.payment{border-color:#cce8da;background:#eaf8f1;color:#176b4a}.action-button:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(32,56,91,.08)}
+.property,.correspondence,.patents,.all-services{padding:24px 25px}.property>h2,.correspondence>h2,.patents>h2,.all-services>h2{font-size:20px;margin-bottom:18px}.property-grid,.correspondence-grid,.patent-grid,.general-services-grid{gap:17px}.property-card{min-height:164px;padding:24px 25px;background:#dceafa}.property-card h3{font-size:17px}.property-card p{font-size:12px;line-height:1.55}.property-card button,.patent-card button{font-size:11px;padding:10px 17px;cursor:pointer}.correspondence-card{min-height:196px;padding:25px 25px 68px;background:#e2f1f1}.correspondence-card h3{font-size:18px}.correspondence-card p{font-size:12px;line-height:1.55}.correspondence-card a{font-size:12px;padding:10px 17px}.patent-card{min-height:170px;padding:24px 25px 64px;background:#e5e9f8}.patent-card h3{font-size:17px}.patent-card p{font-size:12px;line-height:1.55}.personal-info{padding:21px 22px;background:#dceafa}.personal-info h3{font-size:17px}.personal-card{min-height:120px}.personal-card h4{font-size:13px}.general-service-card{min-height:142px;padding:18px}.general-service-card h3{font-size:15px}.general-service-card p{font-size:12px}
+
+.journal-view{padding:28px 30px 44px;background:#f2f5f9;min-height:calc(100vh - 78px)}.journal-heading{align-items:center;margin-bottom:18px}.journal-title-block{gap:14px}.journal-back{width:42px;height:42px;border:1px solid #e1e7ef;font-size:24px}.journal-title-block h1{font-size:24px}.journal-title-block p{font-size:12px;margin-top:6px}.journal-group-control{display:flex;flex-direction:column;align-items:flex-end;gap:7px}.journal-nav-label{font-size:10px;font-weight:700;color:#7b89a3;text-transform:uppercase}.journal-group-switch{display:flex;gap:4px;padding:4px;background:#e5eaf1;border-radius:8px}.journal-group-switch button{height:40px;padding:0 18px;border-radius:6px;background:transparent;color:#52627e;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;outline:none}.journal-group-switch button:hover{background:rgba(255,255,255,.65)}.journal-group-switch button:focus-visible{box-shadow:0 0 0 3px rgba(52,146,221,.2)}.journal-group-switch button.active{background:#3492dd;color:#fff;box-shadow:0 2px 7px rgba(52,146,221,.25)}
+.journal-card{border:1px solid #e0e6ef;box-shadow:0 8px 24px rgba(32,56,91,.06)}.journal-item-bar{display:block;padding:20px;border-bottom:1px solid #e4e9f1}.journal-item-intro{display:flex;align-items:baseline;gap:12px}.journal-item-intro strong{font-size:16px}.journal-item-intro span{font-size:11px;color:#8492aa}.journal-item-tabs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:14px}.journal-item-tab{min-height:60px;padding:11px 13px;border:1px solid #dfe5ee;border-radius:7px;background:#f8fafc;color:#344762;font-size:12px;font-weight:600;line-height:1.4;text-align:left;cursor:pointer;outline:none;transition:border-color .15s,background .15s,box-shadow .15s}.journal-item-tab:hover{border-color:#b8d6f3;background:#f2f8fe}.journal-item-tab:focus-visible{box-shadow:0 0 0 3px rgba(52,146,221,.18)}.journal-item-tab.active{border-color:#3492dd;background:#edf6ff;color:#155a94;box-shadow:inset 3px 0 0 #3492dd}
+.journal-table-head{height:66px;padding:0 22px}.journal-table-head h2{font-size:17px}.journal-table-head span{font-size:12px}.journal-table{min-width:1640px}.journal-table th{height:64px;padding:11px 9px;font-size:9.5px}.journal-table td{height:54px;padding:9px;font-size:11px}.journal-table th:first-child,.journal-table td:first-child{padding-left:22px;width:58px}.journal-table th:nth-child(2){width:135px}.journal-table th:nth-child(3){width:150px}.journal-table th:nth-child(4){width:180px}.journal-table th:nth-child(5){width:90px}.journal-table th:nth-child(6){width:195px}.journal-table th:nth-child(7){width:145px}.journal-table th:nth-child(8){width:145px}.journal-table th:nth-child(9),.journal-table th:nth-child(10),.journal-table th:nth-child(11){width:160px}.journal-table th:last-child{width:120px}.journal-status{padding:5px 8px;font-size:10px}.journal-action{height:34px;padding:0 15px;font-size:11px}
+@media(max-width:900px){.journal-heading{align-items:stretch;flex-direction:column}.journal-group-control{align-items:stretch}.journal-group-switch{overflow-x:auto}.journal-group-switch button{flex:0 0 auto}.journal-item-tabs{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.journal-view{padding:18px 10px 30px}.journal-item-tabs{grid-template-columns:1fr}.journal-item-intro{align-items:flex-start;flex-direction:column;gap:4px}.welcome h1{font-size:19px}.service-card h3{font-size:14px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <main class="main">
+    <header class="topbar">
+      <div class="toplinks">
+        <span>▣ &nbsp;Электронный патент</span>
+      </div>
+      <div class="account"><span>♟</span><b>ФЛ</b><div><strong>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТС...</strong><small>ИНН: 12345678901234</small></div><span>↪</span></div>
+    </header>
+
+    <div id="homeView">
+    <section class="welcome">
+      <div><h1>Добро пожаловать, Общество с ограниченной ответственностью</h1><p>ИНН: 12345678901234 &nbsp;&nbsp; ИНН организации: 12345678901234 &nbsp;&nbsp; Ваш рейтинг: <span class="rating">★★★★★ &nbsp; Без рейтинга</span></p></div>
+    </section>
+
+    <div class="dashboard">
+      <div class="content">
+        <div class="top-grid">
+          <section class="services panel">
+            <div class="services-head"><h2>Отчеты и справки</h2><p>Основные сервисы для подачи отчетности, получения справок и работы с заявлениями</p></div>
+            <div class="services-grid">
+              <article class="service-card"><h3>Справка об отсутствии/наличии задолженности по налогам и страховым взносам STI-20</h3><p>Получение сведений о наличии или отсутствии налоговой задолженности и задолженности по страховым взносам.</p></article>
+              <article class="service-card"><h3>Справка о налоговом статусе (резидентстве) Кыргызской Республики</h3><p>Электронное подтверждение налогового статуса и резидентства Кыргызской Республики.</p></article>
+              <article class="service-card"><h3>Выверка расчетов</h3><p>Выверка расчетов налогоплательщика выдает отчет по выверке расчетов налогоплательщика на конкретный период времени. Выверка расчетов НП выдает информацию по всем налогам с начала текущего года по момент запроса.</p></article>
+              <article class="service-card"><h3>Подать Единую налоговую декларацию</h3><p>Подготовка и подача Единой налоговой декларации в электронном виде.</p></article>
+              <article class="service-card"><h3>Подать отчет имущества</h3><p>Формирование и подача отчета по принадлежащим налогоплательщику объектам имущества.</p></article>
+              <article class="service-card"><h3>Зачет/Возврат</h3><p>Раздел по работе с заявлениями НП для зачета и возврата по излишне уплаченной сумме налогов.</p></article>
+              <button type="button" class="service-card journals" id="journalOpen"><h3>Журналы</h3></button>
+            </div>
+          </section>
+
+          <div class="side-tools">
+            <section class="balance panel">
+              <div class="balance-head"><h2><span>▰</span> Пополнить баланс ЕНС</h2><button>Пополнить</button></div>
+              <div class="balance-grid">
+                <article><span class="round-icon">▰</span><i>↗</i><strong>0,00 с.</strong><small>Баланс</small></article>
+                <article><span class="round-icon">⌁</span><i>↗</i><strong>-759 950 с.</strong><small>Задолженность</small></article>
+                <article><span class="round-icon">✣</span><i>↗</i><strong>-27 826 с.</strong><small>Платежи</small></article>
+              </div>
+            </section>
+
+            <section class="obligations panel">
+              <div class="section-head"><h2>Налоговые обязательства</h2><span>Кол-во 5</span></div>
+              <div class="ob-row"><div><strong>01.03.2026</strong><small>Дата налогового обяз.</small></div><div><strong>1720 - Налог на имущество на нежилое здание и помещение</strong><small>Код и вид налога</small></div><div><strong>003</strong><small>Район</small></div><div><strong>5404.88</strong><small>Сумма</small></div><button title="Открыть обязательство" aria-label="Открыть обязательство">›</button></div>
+              <div class="ob-row"><div><strong>01.06.2026</strong><small>Дата налогового обяз.</small></div><div><strong>1720 - Налог на имущество на нежилое здание и помещение</strong><small>Код и вид налога</small></div><div><strong>003</strong><small>Район</small></div><div><strong>5404.88</strong><small>Сумма</small></div><button title="Открыть обязательство" aria-label="Открыть обязательство">›</button></div>
+              <div class="ob-row"><div><strong>01.09.2026</strong><small>Дата налогового обяз.</small></div><div><strong>1720 - Налог на имущество на нежилое здание и помещение</strong><small>Код и вид налога</small></div><div><strong>003</strong><small>Район</small></div><div><strong>5404.88</strong><small>Сумма</small></div><button title="Открыть обязательство" aria-label="Открыть обязательство">›</button></div>
+              <div class="ob-row"><div><strong>01.12.2026</strong><small>Дата налогового обяз.</small></div><div><strong>1720 - Налог на имущество на нежилое здание и помещение</strong><small>Код и вид налога</small></div><div><strong>003</strong><small>Район</small></div><div><strong>5404.88</strong><small>Сумма</small></div><button title="Открыть обязательство" aria-label="Открыть обязательство">›</button></div>
+              <div class="ob-row"><div><strong>01.09.2026</strong><small>Дата налогового обяз.</small></div><div><strong>5070 - Земельный налог за пользование приусадебными участками</strong><small>Код и вид налога</small></div><div><strong>030</strong><small>Район</small></div><div><strong>896.70</strong><small>Сумма</small></div><button title="Открыть обязательство" aria-label="Открыть обязательство">›</button></div>
+              <div class="more">Подробнее</div>
+            </section>
+
+            <div class="action-grid">
+              <button class="action-button">Проверка задолженности</button>
+              <button class="action-button payment">Оплата налогов</button>
+            </div>
+
+            <section class="calendar panel calendar-expanded"><div id="tcCalendarRoot"><div style="padding:40px;text-align:center;color:#9CA3AF">Загрузка календаря...</div></div></section>
+</div>
+        </div>
+
+        <section class="property panel">
+          <h2>Имущество</h2>
+          <div class="property-grid">
+            <article class="property-card"><h3>Недвижимое имущество</h3><p>Перечень недвижимого имущества, принадлежащего указанному лицу</p><button>Перейти</button><div class="property-art">⌂</div></article>
+            <article class="property-card"><h3>Движимое имущество</h3><p>Перечень транспортных средств, принадлежащих указанному лицу</p><button>Перейти</button><div class="property-art">▱🚗</div></article>
+            <article class="property-card"><h3>Нежилые сооружения</h3><p>Перечень нежилых зданий, помещений и сооружений налогоплательщика</p><button>Перейти</button><div class="property-art">▥</div></article>
+          </div>
+        </section>
+
+        <section class="correspondence panel">
+          <h2>Переписка с ГНС</h2>
+          <div class="correspondence-grid">
+            <article class="correspondence-card"><h3>Жалоба</h3><p>Подача жалобы налогоплательщиком на решения налогового органа.</p><a href="#">Перейти</a><div class="correspondence-art">✉</div></article>
+            <article class="correspondence-card"><h3>Паспорт НП</h3><p>Список зарегистрированных торговых точек, для которых доступен паспорт налогоплательщика.</p><a href="#">Перейти</a><div class="correspondence-art">▤</div></article>
+            <article class="correspondence-card"><h3>Продление отчетности</h3><p>Заявление на продление срока предоставления налоговой отчетности.</p><a href="#">Перейти</a><div class="correspondence-art">◫</div></article>
+            <article class="correspondence-card"><h3>О признании задолженности</h3><p>Подача заявления о признании задолженности.</p><a href="#">Перейти</a><div class="correspondence-art">✓</div></article>
+            <article class="correspondence-card featured"><h3>Льготный режим исполнения налоговой задолженности</h3><p>Подача заявления о признании задолженности и выборе льготного режима ее исполнения.</p><a href="https://testcabinet.salyk.kg/correction/preferentialtaxdebt">Перейти</a><div class="correspondence-art">▣</div></article>
+          </div>
+        </section>
+
+        <section class="patents panel">
+          <h2>Патенты</h2>
+          <div class="patent-grid">
+            <article class="patent-card"><h3>Патент</h3><p>Оформление и управление налоговым патентом.</p><button>Перейти</button><div class="patent-art">▤</div></article>
+            <article class="patent-card"><h3>Патент в сфере торговли</h3><p>Заявление и решения по патенту для торговой деятельности.</p><button>Перейти</button><div class="patent-art">▣</div></article>
+            <article class="patent-card"><h3>Электронный патент</h3><p>Получение и просмотр электронного патента налогоплательщика.</p><button>Перейти</button><div class="patent-art">◫</div></article>
+          </div>
+        </section>
+
+        <section class="all-services panel">
+          <h2>Сервисы</h2>
+          <div class="personal-info">
+            <h3>Личные сведения</h3>
+            <div class="personal-grid">
+              <article class="personal-card"><div class="card-mark"><i></i><i></i><i></i><i></i></div><h4>Информация о налоговой регистрации НП</h4></article>
+              <article class="personal-card"><div class="card-mark"><i></i><i></i><i></i><i></i></div><h4>Информация о руководителе, учредителе и главном бухгалтере</h4></article>
+              <article class="personal-card"><div class="card-mark"><i></i><i></i><i></i><i></i></div><h4>Сведения о зарегистрированных налогах (025)</h4></article>
+              <article class="personal-card"><div class="card-mark"><i></i><i></i><i></i><i></i></div><h4>Регистрационные сведения о налогоплательщике (024)</h4></article>
+            </div>
+          </div>
+          <div class="general-services-grid">
+            <article class="general-service-card"><h3>Информация о состоянии расчетов с бюджетом</h3><p>Сведения о налогах, процентах, пени, налоговых санкциях, переплате и задолженности.</p></article>
+            <article class="general-service-card"><h3>Проверка предписания на выездную проверку</h3><p>Проверка сведений предписания на проведение выездной налоговой проверки.</p></article>
+            <article class="general-service-card"><h3>Информация об акцизной марке</h3><p>Поиск акцизной марки табака и алкогольной продукции.</p></article>
+            <article class="general-service-card"><h3>Сводная карточка лицевого счета</h3><p>Сводная информация о сальдо по всем налогам налогоплательщика.</p></article>
+            <article class="general-service-card"><h3>Информация о патенте</h3><p>Поиск информации по серии или номеру патента.</p></article>
+            <article class="general-service-card"><h3>Проверка справки</h3><p>Поиск информации по ИНН, НП и номеру справки.</p></article>
+            <article class="general-service-card"><h3>Информация по ИНН</h3><p>Поиск налогоплательщика по идентификационному номеру.</p></article>
+          </div>
+        </section>
+
+      </div>
+    </div>
+    </div>
+
+    <section class="journal-view" id="journalView" hidden>
+      <div class="journal-heading">
+        <div class="journal-title-block">
+          <button type="button" class="journal-back" id="journalBack" title="Вернуться на главную" aria-label="Вернуться на главную">‹</button>
+          <div><h1>Журналы</h1><p>Главная / Журналы</p></div>
+        </div>
+        <div class="journal-group-control">
+          <span class="journal-nav-label">Направление</span>
+          <div class="journal-group-switch" id="journalGroup" role="tablist" aria-label="Выберите направление журнала">
+            <button type="button" class="active" data-journal-group="main">Основное</button>
+            <button type="button" data-journal-group="correspondence">Переписка ГНС</button>
+            <button type="button" data-journal-group="reports">Электронные отчеты</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="journal-card">
+        <div class="journal-item-bar">
+          <div class="journal-item-intro"><strong>Выберите журнал</strong><span>Все журналы выбранного направления</span></div>
+          <div class="journal-item-tabs" id="journalItem" role="tablist" aria-label="Выберите журнал"></div>
+        </div>
+        <div class="journal-table-head">
+          <h2 id="journalTableTitle">Журнал</h2>
+          <span class="journal-count" id="journalCount">Записей: 0</span>
+        </div>
+        <div class="journal-table-scroll">
+          <table class="journal-table">
+            <thead>
+              <tr>
+                <th>#</th><th>Статус</th><th>ИНН</th><th>Район</th><th>Код</th><th>Период</th><th>Тип</th><th>Сформирован автоматически</th><th>Дата заполнения</th><th>Дата отправки</th><th>Дата принятия</th><th>Действия</th>
+              </tr>
+            </thead>
+            <tbody id="journalTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+(function(){
+var JOURNAL_GROUPS={
+  main:[
+    'Справка об отсутствии/наличии задолженности по налогам и страховым взносам',
+    'Справка о налоговом статусе (резидентстве) Кыргызской Республики',
+    'Зачет/возврат',
+    'Отчеты'
+  ],
+  correspondence:[
+    'Жалобы',
+    'Продление отчетности',
+    'О признании задолженности',
+    'О признании задолженности (льготный режим)'
+  ],
+  reports:[
+    'Журнал старых электронных отчетов',
+    'Журнал сводной информации НКО',
+    'Журнал электронных отчетов для гос. геологии'
+  ]
+};
+var JOURNAL_ROWS=[
+  ['Принят','123456******','Октябрьский р-н','STI-161','01.07.2026 - 31.07.2026','Первоначальный','Нет','10.08.2026 09:42','10.08.2026 09:48','10.08.2026 10:03'],
+  ['Ожидает отправки','123456******','Ленинский р-н','STI-091','01.04.2026 - 30.06.2026','Первоначальный','Да','08.08.2026 16:15','-','-'],
+  ['Принят','123456******','Свердловский р-н','STI-129','01.06.2026 - 30.06.2026','Уточненный','Нет','05.08.2026 11:20','05.08.2026 11:25','05.08.2026 12:04'],
+  ['Не принят','123456******','Первомайский р-н','STI-102','01.01.2026 - 30.06.2026','Первоначальный','Нет','02.08.2026 14:07','02.08.2026 14:11','-'],
+  ['Принят','123456******','Ленинский р-н','STI-167','01.01.2026 - 31.12.2026','Ликвидационный','Да','30.07.2026 18:26','30.07.2026 18:31','31.07.2026 09:12'],
+  ['Ожидает отправки','123456******','Октябрьский р-н','STI-176','01.01.2025 - 31.12.2025','Первоначальный','Нет','27.07.2026 10:35','-','-'],
+  ['Принят','123456******','Аламудунский р-н','STI-177','01.04.2026 - 30.06.2026','Уточненный','Нет','22.07.2026 15:08','22.07.2026 15:14','22.07.2026 16:40'],
+  ['Принят','123456******','Сокулукский р-н','STI-129_8','01.05.2026 - 31.05.2026','Первоначальный','Да','18.07.2026 12:51','18.07.2026 12:56','18.07.2026 13:17']
+];
+
+var homeView=document.getElementById('homeView');
+var journalView=document.getElementById('journalView');
+var journalOpen=document.getElementById('journalOpen');
+var journalBack=document.getElementById('journalBack');
+var journalGroup=document.getElementById('journalGroup');
+var journalItem=document.getElementById('journalItem');
+var journalTableTitle=document.getElementById('journalTableTitle');
+var journalTableBody=document.getElementById('journalTableBody');
+var journalCount=document.getElementById('journalCount');
+var journalSelectedGroup='main';
+var journalSelectedItem=JOURNAL_GROUPS.main[0];
+
+function journalStatusClass(status){
+  if(status==='Принят')return 'accepted';
+  if(status==='Не принят')return 'rejected';
+  return 'pending';
+}
+
+function renderJournalRows(){
+  var rows='';
+  for(var i=0;i<JOURNAL_ROWS.length;i++){
+    var r=JOURNAL_ROWS[i];
+    rows+='<tr><td>'+(i+1)+'</td><td><span class="journal-status '+journalStatusClass(r[0])+'">'+r[0]+'</span></td>';
+    for(var c=1;c<r.length;c++)rows+='<td>'+r[c]+'</td>';
+    rows+='<td><button type="button" class="journal-action" data-journal-row="'+(i+1)+'">Открыть</button></td></tr>';
+  }
+  journalTableBody.innerHTML=rows;
+  journalCount.textContent='Записей: '+JOURNAL_ROWS.length;
+}
+
+function updateJournalTitle(){
+  journalTableTitle.textContent=journalSelectedItem||'Журнал';
+}
+
+function updateJournalItems(){
+  var items=JOURNAL_GROUPS[journalSelectedGroup]||[];
+  journalSelectedItem=items[0]||'';
+  journalItem.innerHTML='';
+  for(var i=0;i<items.length;i++){
+    var button=document.createElement('button');
+    button.type='button';
+    button.className='journal-item-tab'+(i===0?' active':'');
+    button.setAttribute('data-journal-item',items[i]);
+    button.setAttribute('role','tab');
+    button.setAttribute('aria-selected',i===0?'true':'false');
+    button.textContent=items[i];
+    journalItem.appendChild(button);
+  }
+  updateJournalTitle();
+}
+
+function renderJournalRoute(){
+  var journalActive=location.hash==='#journals';
+  homeView.hidden=journalActive;
+  journalView.hidden=!journalActive;
+  document.title=journalActive?'Журналы - Кабинет налогоплательщика':'Taxpayer Cabinet Mockup';
+  if(journalActive){
+    updateJournalItems();
+    window.scrollTo(0,0);
+  }
+}
+
+journalOpen.addEventListener('click',function(){location.hash='journals';});
+journalBack.addEventListener('click',function(){location.hash='';});
+journalGroup.addEventListener('click',function(event){
+  var button=event.target.closest('[data-journal-group]');
+  if(!button||button.getAttribute('data-journal-group')===journalSelectedGroup)return;
+  journalSelectedGroup=button.getAttribute('data-journal-group');
+  journalGroup.querySelectorAll('[data-journal-group]').forEach(function(item){item.classList.toggle('active',item===button);});
+  updateJournalItems();
+});
+journalItem.addEventListener('click',function(event){
+  var button=event.target.closest('[data-journal-item]');
+  if(!button)return;
+  journalSelectedItem=button.getAttribute('data-journal-item');
+  journalItem.querySelectorAll('[data-journal-item]').forEach(function(item){
+    var active=item===button;
+    item.classList.toggle('active',active);
+    item.setAttribute('aria-selected',active?'true':'false');
+  });
+  updateJournalTitle();
+});
+journalTableBody.addEventListener('click',function(event){
+  var button=event.target.closest('.journal-action');
+  if(!button)return;
+  alert('Открыта запись №'+button.getAttribute('data-journal-row')+' из журнала «'+journalSelectedItem+'»');
+});
+window.addEventListener('hashchange',renderJournalRoute);
+updateJournalItems();
+renderJournalRows();
+renderJournalRoute();
+})();
+</script>
+<script>
+(function(){
+var MONTHS_SHORT=["янв.","февр.","март","апр.","май","июнь","июль","авг.","сент.","окт.","нояб.","дек."];
+var MONTHS_FULL=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+var MONTHS_FULL_GEN=["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
+var WEEKDAYS_FULL=["Воскресенье","Понедельник","Вторник","Среда","Четверг","Пятница","Суббота"];
+var WEEKDAYS_SHORT=["ВС","ПН","ВТ","СР","ЧТ","ПТ","СБ"];
+
+var TAX_DATA=[{"\u043d\u0430\u043b\u043e\u0433": "\u041f\u043e\u0434\u043e\u0445\u043e\u0434\u043d\u044b\u0439 \u043d\u0430\u043b\u043e\u0433", "\u043a\u043e\u0434": "STI-100_4", "\u044e\u0440": false, "\u0438\u043f": false, "\u0444\u0438\u0437": true, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u0433\u043e\u0434\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "01.05", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u0433\u043e\u0434\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "01.05", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": null, "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 0}, {"\u043d\u0430\u043b\u043e\u0433": "\u041f\u043e\u0434\u043e\u0445\u043e\u0434\u043d\u044b\u0439 \u043d\u0430\u043b\u043e\u0433 \u0434\u043b\u044f \u0437\u0430\u043d\u0438\u043c\u0430\u044e\u0449\u0438\u0445 \u0433\u043e\u0441/\u043c\u0443\u043d \u0434\u043e\u043b\u0436\u043d\u043e\u0441\u0442\u044c", "\u043a\u043e\u0434": "STI-155_4", "\u044e\u0440": false, "\u0438\u043f": false, "\u0444\u0438\u0437": true, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u0433\u043e\u0434\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "01.04", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u0433\u043e\u0434\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "01.04", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": null, "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 1}, {"\u043d\u0430\u043b\u043e\u0433": "\u041f\u043e\u0434\u043e\u0445\u043e\u0434\u043d\u044b\u0439 \u043d\u0430\u043b\u043e\u0433", "\u043a\u043e\u0434": "STI-161", "\u044e\u0440": true, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": "15", "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": "\u0421\u0442\u0440\u0430\u0445\u043e\u0432\u044b\u0435 \u0432\u0437\u043d\u043e\u0441\u044b", "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": null, "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 2}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u043d\u0430 \u043f\u0440\u0438\u0431\u044b\u043b\u044c", "\u043a\u043e\u0434": "STI-101", "\u044e\u0440": true, "\u0438\u043f": false, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u0433\u043e\u0434\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "01.04", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u0433\u043e\u0434\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "01.04", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": null, "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 3}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u043d\u0430 \u043f\u0440\u0438\u0431\u044b\u043b\u044c", "\u043a\u043e\u0434": "STI-102", "\u044e\u0440": false, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u0433\u043e\u0434\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "01.05", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u0433\u043e\u0434\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "01.05", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": null, "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 4}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u043d\u0430 \u043f\u0440\u0438\u0431\u044b\u043b\u044c", "\u043a\u043e\u0434": "STI-107_3", "\u044e\u0440": true, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "3 \u0440\u0430\u0437\u0430 \u0432 \u0433\u043e\u0434", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20.05,20.8,20.11", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u0433\u043e\u0434\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20.05,20.8,20.11", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u041d\u0435 \u043f\u043e\u0437\u0434\u043d\u0435\u0435 20 \u043c\u0430\u044f, 20 \u0430\u0432\u0433\u0443\u0441\u0442\u0430, 20 \u043d\u043e\u044f\u0431\u0440\u044f", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 5}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u043d\u0430 \u0434\u043e\u0445\u043e\u0434\u044b \u0438\u043d\u043e\u0441\u0442\u0440\u0430\u043d\u043d\u043e\u0439 \u043e\u0440\u0433\u0430\u043d\u0438\u0437\u0430\u0446\u0438\u0438", "\u043a\u043e\u0434": "STI-106_5", "\u044e\u0440": true, "\u0438\u043f": false, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u041c\u0435\u0441\u044f\u0446\u0430, \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0433\u043e \u0437\u0430 \u043c\u0435\u0441\u044f\u0446\u0435\u043c \u0432\u044b\u043f\u043b\u0430\u0442\u044b \u0434\u043e\u0445\u043e\u0434\u0430", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u0422\u043e\u043b\u044c\u043a\u043e", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": true, "id": 6}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u043d\u0430 \u0434\u043e\u0445\u043e\u0434\u044b \u0433\u043e\u0440\u043d\u043e\u0434\u043e\u0431\u044b\u0432\u0430\u044e\u0449\u0438\u0445 \u0438 \u0433\u043e\u0440\u043d\u043e\u043f\u0435\u0440\u0435\u0440\u0430\u0431\u0430\u0442\u044b\u0432\u0430\u044e\u0449\u0438\u0445 \u043f\u0440\u0435\u0434\u043f\u0440\u0438\u044f\u0442\u0438\u0439", "\u043a\u043e\u0434": "STI-108_2", "\u044e\u0440": true, "\u0438\u043f": false, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": null, "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 7}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0414\u0421", "\u043a\u043e\u0434": "STI-062", "\u044e\u0440": true, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "25", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "25", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u0414\u043b\u044f \u043a\u0440\u0443\u043f\u043d\u044b\u0445 (\u0423\u041a\u041a\u041d) \u2014 \u043d\u0435 \u043f\u043e\u0437\u0434\u043d\u0435\u0435 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0433\u043e \u0434\u043d\u044f \u043c\u0435\u0441\u044f\u0446\u0430", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 8}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0414\u0421", "\u043a\u043e\u0434": "STI-167", "\u044e\u0440": true, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "25", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "25", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": null, "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 9}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0414\u0421", "\u043a\u043e\u0434": "STI-165", "\u044e\u0440": true, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "-1.04,-1.07,-1.10,-1.03", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "25", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u041d\u0435 \u043f\u043e\u0437\u0434\u043d\u0435\u0435 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0433\u043e \u0434\u043d\u044f \u043c\u0435\u0441\u044f\u0446\u0430, \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0433\u043e \u0437\u0430 \u043e\u0442\u0447\u0435\u0442\u043d\u044b\u043c \u043f\u0435\u0440\u0438\u043e\u0434\u043e\u043c", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u0422\u043e\u043b\u044c\u043a\u043e", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": true, "id": 10}, {"\u043d\u0430\u043b\u043e\u0433": "\u0410\u043a\u0446\u0438\u0437\u043d\u044b\u0439 \u043d\u0430\u043b\u043e\u0433", "\u043a\u043e\u0434": "STI-070_1", "\u044e\u0440": true, "\u0438\u043f": false, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": null, "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 11}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0414\u0421 \u0438 \u0430\u043a\u0446\u0438\u0437 \u043d\u0430 \u0438\u043c\u043f\u043e\u0440\u0442 (\u0415\u0410\u042d\u0421) ( \u041a\u043e\u0441\u0432\u0435\u043d\u043d\u044b\u0435 \u043d\u0430\u043b\u043e\u0433\u0438 )", "\u043a\u043e\u0434": "STI-123", "\u044e\u0440": true, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u041c\u0435\u0441\u044f\u0446\u0430, \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0433\u043e \u0437\u0430 \u043c\u0435\u0441\u044f\u0446\u0435\u043c \u0438\u043c\u043f\u043e\u0440\u0442\u0430", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u0435\u043b\u044c\u043d\u043e", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": true, "id": 12}, {"\u043d\u0430\u043b\u043e\u0433": "\u0420\u043e\u044f\u043b\u0442\u0438", "\u043a\u043e\u0434": "STI-140", "\u044e\u0440": true, "\u0438\u043f": false, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": true, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u0417\u0430 \u0438\u0441\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435\u043c \u0441\u0443\u0431\u044a\u0435\u043a\u0442\u043e\u0432 \u043c\u0430\u043b\u043e\u0433\u043e \u0438 \u0441\u0440\u0435\u0434\u043d\u0435\u0433\u043e \u043f\u0440\u0435\u0434\u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0442\u0435\u043b\u044c\u0441\u0442\u0432\u0430", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 13}, {"\u043d\u0430\u043b\u043e\u0433": "\u0420\u043e\u044f\u043b\u0442\u0438", "\u043a\u043e\u0434": "STI-138", "\u044e\u0440": true, "\u0438\u043f": false, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": true, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20.04,20.07,20.10,20.03", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20.04,20.07,20.10,20.03", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u041c\u0435\u0441\u044f\u0446\u0430, \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0433\u043e \u0437\u0430 \u043e\u0442\u0447\u0435\u0442\u043d\u044b\u043c \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u043e\u043c", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": true, "id": 14}, {"\u043d\u0430\u043b\u043e\u0433": "\u0420\u043e\u044f\u043b\u0442\u0438", "\u043a\u043e\u0434": "STI-139", "\u044e\u0440": true, "\u0438\u043f": false, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": true, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20.04,20.07,20.10,20.03", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u041c\u0435\u0441\u044f\u0446\u0430, \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0433\u043e \u0437\u0430 \u043e\u0442\u0447\u0435\u0442\u043d\u044b\u043c \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u043e\u043c", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": true, "id": 15}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u0441 \u043f\u0440\u043e\u0434\u0430\u0436", "\u043a\u043e\u0434": "STI-129_7", "\u044e\u0440": false, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": true, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20.04,20.07,20.10,20.03", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20.04,20.07,20.10,20.03", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u041c\u0435\u0441\u044f\u0446\u0430, \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0433\u043e \u0437\u0430 \u043e\u0442\u0447\u0435\u0442\u043d\u044b\u043c \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u043e\u043c", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": true, "id": 16}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u0441 \u043f\u0440\u043e\u0434\u0430\u0436", "\u043a\u043e\u0434": "STI-129_7_1", "\u044e\u0440": true, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": true, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u041c\u0435\u0441\u044f\u0446\u0430, \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0433\u043e \u0437\u0430 \u043e\u0442\u0447\u0435\u0442\u043d\u044b\u043c \u043c\u0435\u0441\u044f\u0446\u0435\u043c", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": true, "id": 17}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u0441 \u043f\u0440\u043e\u0434\u0430\u0436", "\u043a\u043e\u0434": "STI-129_7_2", "\u044e\u0440": true, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": true, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u041c\u0435\u0441\u044f\u0446\u0430, \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0433\u043e \u0437\u0430 \u043e\u0442\u0447\u0435\u0442\u043d\u044b\u043c \u043c\u0435\u0441\u044f\u0446\u0435\u043c", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": true, "id": 18}, {"\u043d\u0430\u043b\u043e\u0433": "\u0415\u0434\u0438\u043d\u044b\u0439 \u043d\u0430\u043b\u043e\u0433", "\u043a\u043e\u0434": "STI-091_7", "\u044e\u0440": false, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": true, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20.04,20.07,20.10,20.03", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20.04,20.07,20.10,20.03", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u041c\u0435\u0441\u044f\u0446\u0430, \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0433\u043e \u0437\u0430 \u043e\u0442\u0447\u0435\u0442\u043d\u044b\u043c \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u043e\u043c", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": true, "id": 19}, {"\u043d\u0430\u043b\u043e\u0433": "\u0415\u0434\u0438\u043d\u044b\u0439 \u043d\u0430\u043b\u043e\u0433", "\u043a\u043e\u0434": "STI-091_7_1", "\u044e\u0440": true, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": true, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": true, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": null, "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": true, "id": 20}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u043d\u0430 \u043c\u0430\u0439\u043d\u0438\u043d\u0433", "\u043a\u043e\u0434": "STI-163_1", "\u044e\u0440": true, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u041c\u0435\u0441\u044f\u0446\u0430, \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0433\u043e \u0437\u0430 \u043e\u0442\u0447\u0435\u0442\u043d\u044b\u043c \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u043e\u043c", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": true, "id": 21}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u043d\u0430 \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c \u0432 \u0441\u0444\u0435\u0440\u0435 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u043e\u0439 \u0442\u043e\u0440\u0433\u043e\u0432\u043b\u0438", "\u043a\u043e\u0434": "STI-168", "\u044e\u0440": true, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20.04,20.07,20.10,20.03", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20.04,20.07,20.10,20.03", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u041c\u0435\u0441\u044f\u0446\u0430, \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0433\u043e \u0437\u0430 \u043e\u0442\u0447\u0435\u0442\u043d\u044b\u043c \u043a\u0432\u0430\u0440\u0442\u0430\u043b\u043e\u043c", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": true, "id": 22}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u043d\u0430 \u0438\u0433\u043e\u0440\u043d\u0443\u044e \u0434\u0435\u044f\u0442\u0435\u043b\u044c\u043d\u043e\u0441\u0442\u044c", "\u043a\u043e\u0434": "STI-171_1", "\u044e\u0440": true, "\u0438\u043f": false, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20.04,20.07,20.10,20.03", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20.04,20.07,20.10,20.03", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u0414\u043b\u044f \u043e\u043d\u043b\u0430\u0439\u043d-\u043a\u0430\u0437\u0438\u043d\u043e \u0438 \u044d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u044b\u0445 (\u0432\u0438\u0440\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u0445) \u043a\u0430\u0437\u0438\u043d\u043e", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": true, "id": 23}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u043d\u0430 \u0438\u043c\u0443\u0449\u0435\u0441\u0442\u0432\u043e (\u0436\u0438\u043b\u043e\u0439 \u043e\u0431\u044a\u0435\u043a\u0442)", "\u043a\u043e\u0434": "STI-086_3", "\u044e\u0440": false, "\u0438\u043f": false, "\u0444\u0438\u0437": true, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": null, "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": null, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u0433\u043e\u0434\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "01.09", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": null, "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 24}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u043d\u0430 \u0438\u043c\u0443\u0449\u0435\u0441\u0442\u0432\u043e (\u043d\u0435\u0436\u0438\u043b\u043e\u0439 \u043e\u0431\u044a\u0435\u043a\u0442)", "\u043a\u043e\u0434": "STI-087_2026", "\u044e\u0440": true, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": null, "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": null, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20.03,20.06,20.09,20.12", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": null, "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 25}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u043d\u0430 \u0438\u043c\u0443\u0449\u0435\u0441\u0442\u0432\u043e (\u043d\u0435\u0436\u0438\u043b\u043e\u0439, \u0430\u0440\u0435\u043d\u0434\u0430 \u0443 \u0433\u043e\u0441.)", "\u043a\u043e\u0434": "STI-077_2026", "\u044e\u0440": true, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u0433\u043e\u0434\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "01.03", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043a\u0432\u0430\u0440\u0442\u0430\u043b\u044c\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20.03,20.06,20.09,20.12", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": "\u0418\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0439 \u0440\u0430\u0441\u0447\u0435\u0442", "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 26}, {"\u043d\u0430\u043b\u043e\u0433": "\u041d\u0430\u043b\u043e\u0433 \u043d\u0430 \u0442\u0440\u0430\u043d\u0437\u0430\u043a\u0446\u0438\u044e", "\u043a\u043e\u0434": "STI-228", "\u044e\u0440": true, "\u0438\u043f": true, "\u0444\u0438\u0437": false, "\u043c\u0430\u043b\u043e\u0435": false, "\u0441\u0440\u0435\u0434\u043d\u0435\u0435": false, "\u043a\u0440\u0443\u043f\u043d\u043e\u0435": false, "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u0442\u0447\u0435\u0442\u0430": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u0442\u0447\u0435\u0442\u0430": "20", "\u043f\u0435\u0440\u0438\u043e\u0434\u041e\u043f\u043b\u0430\u0442\u044b": "\u0415\u0436\u0435\u043c\u0435\u0441\u044f\u0447\u043d\u043e", "\u0441\u0440\u043e\u043a\u041e\u043f\u043b\u0430\u0442\u044b": "20", "\u0434\u043e\u043f\u041f\u0435\u0440\u0438\u043e\u0434": null, "\u0434\u043e\u043f\u0421\u0440\u043e\u043a": null, "\u0434\u043e\u043f\u041c\u0435\u0442\u043a\u0430": null, "\u043d\u0430\u043f\u043e\u043c\u0438\u043d\u0430\u043d\u0438\u0435": 5, "\u043f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435": null, "\u043d\u0435\u0440\u0435\u0437\u0438\u0434\u0435\u043d\u0442": "\u041d\u0435\u0442", "\u043f\u0440\u0435\u0434\u041f\u0435\u0440\u0438\u043e\u0434": false, "id": 27}];
+
+/* Column name mapping from xlsx header */
+var TC_COL={
+  name:'Наименование налога',form:'Формы отчета',
+  юр:'Юр. лицо',ип:'ип',физ:'Физ. лицо',
+  малое:'малое',среднее:'среднее',крупное:'крупное',
+  периодОтчета:'Периодичность подачи отчета',срокОтчета:'Срок форматированный',
+  периодОплаты:'Периодичность оплаты',срокОплаты:'Срок уплаты форматированный',
+  допПериод:'Дополнительный периодичность',допСрок:'Дополнительный срок',допМетка:'Пояснение дополнительного срока',
+  напоминание:'Напомнинание',примечание:'Примечание отчета',
+  нерезидент:'Подача не резидентов',предПериод:'Подача за предыдущий период'
+};
+
+function tcParseXlsx(data){
+  var wb=XLSX.read(data,{type:'array'});
+  var ws=wb.Sheets[wb.SheetNames[0]];
+  var rows=XLSX.utils.sheet_to_json(ws,{defval:null});
+  return tcParseRows(rows);
+}
+
+function tcParseRows(rows){
+  var result=[];
+  for(var i=0;i<rows.length;i++){
+    var r=rows[i];
+    var name=r[TC_COL.name];
+    /* Skip rows with no dates at all */
+    var hasReport=!!r[TC_COL.срокОтчета];
+    var hasPay=!!r[TC_COL.срокОплаты];
+    var hasAdd=!!r[TC_COL.допСрок];
+    if(!hasReport&&!hasPay&&!hasAdd)continue;
+    var да=function(v){return v==='Да'||v==='да';};
+    var remind=parseInt(r[TC_COL.напоминание],10);
+    result.push({
+      id:result.length,
+      налог:name||'',
+      код:r[TC_COL.form]||null,
+      юр:да(r[TC_COL.юр]),ип:да(r[TC_COL.ип]),физ:да(r[TC_COL.физ]),
+      малое:да(r[TC_COL.малое]),среднее:да(r[TC_COL.среднее]),крупное:да(r[TC_COL.крупное]),
+      периодОтчета:r[TC_COL.периодОтчета]||null,
+      срокОтчета:r[TC_COL.срокОтчета]?String(r[TC_COL.срокОтчета]):null,
+      периодОплаты:r[TC_COL.периодОплаты]||null,
+      срокОплаты:r[TC_COL.срокОплаты]?String(r[TC_COL.срокОплаты]):null,
+      допПериод:r[TC_COL.допПериод]||null,
+      допСрок:r[TC_COL.допСрок]?String(r[TC_COL.допСрок]):null,
+      допМетка:r[TC_COL.допМетка]||null,
+      напоминание:isNaN(remind)?5:remind,
+      примечание:r[TC_COL.примечание]||null,
+      нерезидент:r[TC_COL.нерезидент]||'Нет',
+      предПериод:r[TC_COL.предПериод]==='Правда'||r[TC_COL.предПериод]===true
+    });
+  }
+  return result;
+}
+
+var today=new Date();
+var tcYear=2026;
+var tcMonth=(today.getFullYear()===2026)?today.getMonth()+1:1;
+var tcSelectedDay=(today.getFullYear()===tcYear)?today.getDate():null;
+var tcExcluded={};
+var tcFilterOpen=false;
+var tcSettingsOpen=false;
+var tcNonResident=false;
+var tcAnimating=false;
+
+/* Default taxpayer profile — in production filled from user session */
+var tcEntityType="ИП";
+var tcBizSize="малое";
+var tcIsAgent=false;
+
+function tcMatchesTax(tax){
+  /* Non-resident filtering */
+  if(tcNonResident){
+    /* Non-resident user: show only taxes with "Только" or "Включительно" */
+    if(tax.нерезидент==="Нет")return false;
+  }else{
+    /* Resident user: hide taxes marked "Только" (for non-residents only) */
+    if(tax.нерезидент==="Только")return false;
+  }
+  /* Entity type check */
+  var em=(tcEntityType==="ИП"&&tax.ип)||(tcEntityType==="ЮР"&&tax.юр)||(tcEntityType==="ФИЗ"&&tax.физ);
+  if(!em){
+    /* Some taxes have no entity flags at all (e.g. size-only like Роялти малое/среднее) — still allow if biz size matches */
+    var noEntity=!tax.юр&&!tax.ип&&!tax.физ;
+    if(!noEntity)return false;
+  }
+  /* Business size check */
+  if((tcEntityType==="ИП"||tcEntityType==="ЮР")&&tcBizSize){
+    var hasSizeFlag=tax.малое||tax.среднее||tax.крупное;
+    if(hasSizeFlag){
+      if(tcBizSize==="малое"&&!tax.малое)return false;
+      if(tcBizSize==="среднее"&&!tax.среднее)return false;
+      if(tcBizSize==="крупное"&&!tax.крупное)return false;
+    }
+  }
+  return true;
+}
+
+/* Parse a deadline string and return an array of day numbers that fall in the given month.
+   Formats: "20" = day 20 every month; "01.05" = day 1 of month 5; "20.04,20.07,20.10,20.03" = multi;
+   "-1.04" = last day of month 4. Returns [] if str is null/empty. */
+function tcParseDays(str,mo,lastDay){
+  if(!str)return [];
+  str=str.trim();
+  if(str.indexOf(',')===-1&&str.indexOf('.')===-1){
+    /* Just a number like "20" — every month */
+    var d=parseInt(str,10);
+    if(isNaN(d))return [];
+    return [d===-1?lastDay:Math.min(d,lastDay)];
+  }
+  var parts=str.split(',');
+  var result=[];
+  for(var i=0;i<parts.length;i++){
+    var p=parts[i].trim();
+    var dotIdx=p.indexOf('.');
+    if(dotIdx===-1)continue;
+    var dayPart=parseInt(p.substring(0,dotIdx),10);
+    var monPart=parseInt(p.substring(dotIdx+1),10);
+    if(isNaN(dayPart)||isNaN(monPart))continue;
+    if(monPart===mo){
+      result.push(dayPart===-1?lastDay:Math.min(dayPart,lastDay));
+    }
+  }
+  return result;
+}
+
+function tcBuildName(tax){
+  var n=tax.налог;
+  if(tax.малое)n+=" (малое)";
+  if(tax.среднее)n+=" (среднее)";
+  if(tax.крупное)n+=" (крупное)";
+  return n;
+}
+
+function tcGetEvents(){
+  var mo=tcMonth,yr=tcYear;
+  var filtered=TAX_DATA.filter(function(t){return tcMatchesTax(t)&&!tcExcluded[t.id];});
+  var ld=new Date(yr,mo,0).getDate();
+  var events=[];
+
+  filtered.forEach(function(tax){
+    var name=tcBuildName(tax);
+    var form=tax.код||null;
+    var note=tax.примечание||null;
+    var remind=tax.напоминание||5;
+    var nonResident=tax.нерезидент||"Нет";
+    var prevPeriod=!!tax.предПериод;
+
+    /* Report events */
+    if(tax.срокОтчета){
+      var reportDays=tcParseDays(tax.срокОтчета,mo,ld);
+      for(var ri=0;ri<reportDays.length;ri++){
+        var rd=reportDays[ri];
+        var rdate=new Date(yr,mo-1,rd);
+        events.push({day:rd,weekday:WEEKDAYS_SHORT[rdate.getDay()],type:"отчёт",name:name,form:form,note:note,remind:remind,nonResident:nonResident,prevPeriod:prevPeriod,additionalLabel:null,taxId:tax.id});
+      }
+    }
+
+    /* Payment events */
+    if(tax.срокОплаты){
+      var payDays=tcParseDays(tax.срокОплаты,mo,ld);
+      for(var pi=0;pi<payDays.length;pi++){
+        var pd=payDays[pi];
+        var pdate=new Date(yr,mo-1,pd);
+        events.push({day:pd,weekday:WEEKDAYS_SHORT[pdate.getDay()],type:"уплата",name:name,form:form,note:note,remind:remind,nonResident:nonResident,prevPeriod:prevPeriod,additionalLabel:null,taxId:tax.id});
+      }
+    }
+
+    /* Additional payment events */
+    if(tax.допПериод){
+      var addDay=parseInt(tax.допСрок,10);
+      if(!isNaN(addDay)){
+        var addDays=[];
+        if(tax.допПериод==="Ежемесячно"){
+          addDays.push(Math.min(addDay,ld));
+        }else{
+          addDays=tcParseDays(tax.допСрок,mo,ld);
+        }
+        for(var ai=0;ai<addDays.length;ai++){
+          var ad=addDays[ai];
+          var adate=new Date(yr,mo-1,ad);
+          events.push({day:ad,weekday:WEEKDAYS_SHORT[adate.getDay()],type:"доп. уплата",name:name,form:form,note:note,remind:remind,nonResident:nonResident,prevPeriod:prevPeriod,additionalLabel:tax.допМетка||null,taxId:tax.id});
+        }
+      }
+    }
+  });
+
+  events.sort(function(a,b){return a.day-b.day;});
+  return events;
+}
+
+
+function tcRender(){
+  var events=tcGetEvents();
+  var daysInMonth=new Date(tcYear,tcMonth,0).getDate();
+  var deadlineDays={};events.forEach(function(e){deadlineDays[e.day]=true;});
+  var isCurrentMonth=today.getFullYear()===tcYear&&today.getMonth()+1===tcMonth;
+  var todayDay=isCurrentMonth?today.getDate():null;
+
+  /* The active day: selected or today */
+  var activeDay=tcSelectedDay||(isCurrentMonth?todayDay:1);
+  var activeDateObj=new Date(tcYear,tcMonth-1,activeDay);
+  var activeWeekday=WEEKDAYS_FULL[activeDateObj.getDay()];
+  var activeEvents=events.filter(function(e){return e.day===activeDay;});
+  if(!tcSelectedDay&&activeEvents.length===0&&events.length>0){
+    var nextDay=null;
+    for(var ndi=0;ndi<events.length;ndi++){
+      if(!isCurrentMonth||events[ndi].day>=activeDay){nextDay=events[ndi].day;break;}
+    }
+    activeDay=nextDay||events[0].day;
+    activeDateObj=new Date(tcYear,tcMonth-1,activeDay);
+    activeWeekday=WEEKDAYS_FULL[activeDateObj.getDay()];
+    activeEvents=events.filter(function(e){return e.day===activeDay;});
+  }
+  var isActiveToday=isCurrentMonth&&activeDay===todayDay;
+
+  /* All matching taxes (for filter panel) */
+  var allTaxes=TAX_DATA.filter(function(t){return tcMatchesTax(t);});
+  var excludedCount=0;for(var xi=0;xi<allTaxes.length;xi++){if(tcExcluded[allTaxes[xi].id])excludedCount++;}
+  var activeCount=allTaxes.length-excludedCount;
+
+  var h='';
+
+  /* Check which months have deadlines */
+  var monthHasDl={};
+  var filteredAll=TAX_DATA.filter(function(t){return tcMatchesTax(t)&&!tcExcluded[t.id];});
+  for(var mci=1;mci<=12;mci++){
+    var mld=new Date(tcYear,mci,0).getDate();
+    for(var mti=0;mti<filteredAll.length;mti++){
+      var mt=filteredAll[mti];
+      if((mt.срокОтчета&&tcParseDays(mt.срокОтчета,mci,mld).length>0)||(mt.срокОплаты&&tcParseDays(mt.срокОплаты,mci,mld).length>0)||(mt.допСрок&&tcParseDays(mt.допСрок,mci,mld).length>0)){monthHasDl[mci]=true;break;}
+    }
+  }
+
+  /* === MONTH STRIP (top) === */
+  h+='<div class="tc-month-strip-wrap"><div class="tc-month-strip">';
+  for(var mi=0;mi<12;mi++){
+    var isActive=tcMonth===mi+1;
+    var isCur=today.getFullYear()===tcYear&&today.getMonth()===mi;
+    var cls='tc-mc';
+    if(isActive)cls+=' active';
+    else if(isCur)cls+=' cur';
+    if(monthHasDl[mi+1])cls+=' tc-mc-has-dl';
+    h+='<div class="'+cls+'" data-tcmonth="'+(mi+1)+'"><span class="tc-mc-full">'+MONTHS_FULL[mi]+'</span><div class="tc-mc-dot"></div></div>';
+  }
+  h+='</div></div>';
+
+  /* Buttons will be rendered inside hero */
+  var etLabels={"ИП":"ИП","ЮР":"Юр.","ФИЗ":"Физ."};
+  var tcBtnsHtml='<div class="tc-topbtns">';
+  tcBtnsHtml+='<button class="tc-topbtn" id="tcSettingsToggle">&#9881; <span class="tc-et-label">'+etLabels[tcEntityType]+'</span></button>';
+  tcBtnsHtml+='<button class="tc-topbtn" id="tcFilterToggle">&#9776; Налоги';
+  if(excludedCount>0)tcBtnsHtml+=' <span class="tc-fbadge">&minus;'+excludedCount+'</span>';
+  tcBtnsHtml+='</button></div>';
+
+  /* Settings overlay (entity type + non-resident) */
+  if(tcSettingsOpen){
+    h+='<div class="tc-overlay" id="tcOverlay">';
+    h+='<div class="tc-filter-panel">';
+    h+='<div class="tc-filter-panel-head"><span>Настройки</span><div><button class="tc-filter-close" id="tcOvClose">&times;</button></div></div>';
+    h+='<div class="tc-ov-section"><div class="tc-ov-section-title">Тип субъекта</div><div class="tc-ov-row">';
+    h+='<button class="tc-ov-pill'+(tcEntityType==="ИП"?' active':'')+'" data-tcet="ИП">ИП</button>';
+    h+='<button class="tc-ov-pill'+(tcEntityType==="ЮР"?' active':'')+'" data-tcet="ЮР">Юр. лицо</button>';
+    h+='<button class="tc-ov-pill'+(tcEntityType==="ФИЗ"?' active':'')+'" data-tcet="ФИЗ">Физ. лицо</button>';
+    h+='</div></div>';
+    h+='<div class="tc-ov-section"><div class="tc-ov-section-title">Резидентство</div><div class="tc-ov-row">';
+    h+='<button class="tc-ov-pill'+(!tcNonResident?' active':'')+'" data-tcres="0">Резидент</button>';
+    h+='<button class="tc-ov-pill'+(tcNonResident?' active-v':'')+'" data-tcres="1">Не резидент</button>';
+    h+='</div></div>';
+    h+='</div></div>';
+  }
+
+  /* Filter overlay (taxes) */
+  if(tcFilterOpen){
+    h+='<div class="tc-overlay" id="tcOverlay">';
+    h+='<div class="tc-filter-panel"><div class="tc-filter-panel-head"><span>Налоги для отображения</span><div>';
+    if(excludedCount>0)h+='<button class="tc-filter-reset" id="tcFilterReset">Сбросить</button>';
+    h+='<button class="tc-filter-close" id="tcOvClose">&times;</button>';
+    h+='</div></div><div class="tc-filter-tags">';
+    for(var fi=0;fi<allTaxes.length;fi++){
+      var ft=allTaxes[fi];
+      var isOff=!!tcExcluded[ft.id];
+      h+='<button class="tc-filter-tag '+(isOff?'off':'on')+'" data-tcfid="'+ft.id+'">'+ft.налог+'</button>';
+    }
+    h+='</div><div class="tc-filter-count">'+activeCount+' из '+allTaxes.length+' налогов активно</div></div>';
+    h+='</div>';
+  }
+
+  /* Pre-compute grouped items and layout mode */
+  var grouped={},groupOrder=[];
+  if(activeEvents.length>0){
+    for(var ai=0;ai<activeEvents.length;ai++){
+      var ae=activeEvents[ai];
+      var key=ae.taxId+'_'+(ae.type==='доп. уплата'?'доп':'main');
+      if(!grouped[key]){grouped[key]={types:[],ev:ae};groupOrder.push(key);}
+      grouped[key].types.push(ae.type);
+    }
+  }
+  var gc=groupOrder.length;
+  /* v2: no split layout */
+
+  var warnInfo=null;
+  if(activeEvents.length===0){
+    for(var wi=0;wi<events.length;wi++){
+      var diff=events[wi].day-activeDay;
+      var evRemind=events[wi].remind||5;
+      if(diff>0&&diff<=evRemind){warnInfo={daysLeft:diff,deadlineDay:events[wi].day,count:0};
+        for(var wj=wi;wj<events.length&&events[wj].day===events[wi].day;wj++)warnInfo.count++;
+        break;
+      }
+    }
+  }
+  var nextDl=null;
+  for(var ni=0;ni<events.length;ni++){if(events[ni].day>activeDay){nextDl=events[ni].day;break;}}
+
+  /* Helper: render the tax list HTML */
+  function tcTaxListHtml(){
+    var lh='<div class="tc-tax-list">';
+    for(var gi=0;gi<groupOrder.length;gi++){
+      var g=grouped[groupOrder[gi]];var ge=g.ev;var types=g.types;
+      var mainText,metaText,formLine='';
+      if(ge.type==='доп. уплата'){mainText='Срок уплаты: '+(ge.additionalLabel||ge.name);metaText=ge.name;}
+      else{var hasR=types.indexOf('отчёт')!==-1;var hasP=types.indexOf('уплата')!==-1;mainText=(hasR&&hasP?'Отчёт и уплата':hasR?'Отчёт':'Срок уплаты')+': '+ge.name;metaText=ge.prevPeriod?'':(ge.note||'');}
+      var formHtml='';
+      if(ge.form){
+        if(ge.prevPeriod){
+          formHtml='<div class="tc-ti-form tc-has-info" data-tctip="За предыдущий период. Оплата производится за предыдущий отчётный период. Например, в апреле вы платите за март.">FORM '+ge.form+'</div>';
+        }else{
+          formHtml='<div class="tc-ti-form" data-tctip="Оплата за текущий период.">FORM '+ge.form+'</div>';
+        }
+      }
+      lh+='<div class="tc-tax-item"><div class="tc-ti-icon"></div><div><div class="tc-ti-name">'+mainText+'</div>'+formHtml+(metaText?'<div class="tc-ti-meta">'+metaText+'</div>':'')+'</div></div>';
+    }
+    lh+='</div>';return lh;
+  }
+
+  /* === HERO v2: blur flash then show content === */
+  h+='<div class="tc-hero'+(tcAnimating?' tc-anim':'')+'">';
+  if(tcAnimating)h+='<div class="tc-hero-flash-num">'+activeDay+'</div>';
+  h+=tcBtnsHtml;
+  h+='<div class="tc-hero-inner">';
+  h+='<div class="tc-hero-list-wrap'+(gc===0?' tc-empty':'')+'">';
+
+  if(gc===0){
+    if(warnInfo){
+      h+='<div class="tc-hero-count zero" style="background:#ECFDF5;color:#059669">'+warnInfo.count+' '+(warnInfo.count===1?'отчёт':warnInfo.count<5?'отчёта':'отчётов')+' &mdash; '+warnInfo.deadlineDay+' '+MONTHS_FULL_GEN[tcMonth-1]+'</div>';
+      h+='<div class="tc-hero-warn"><span class="tc-warn-icon">&#9888;</span> До сдачи отчётности осталось '+warnInfo.daysLeft+' '+(warnInfo.daysLeft===1?'день':warnInfo.daysLeft<5?'дня':'дней')+'</div>';
+      var wdlDate=new Date(tcYear,tcMonth-1,warnInfo.deadlineDay);
+      h+='<button class="tc-next-btn" id="tcNextBtn" data-nd="'+warnInfo.deadlineDay+'" style="background:linear-gradient(135deg,#34D399,#059669);box-shadow:0 2px 8px rgba(52,211,153,0.25)"><span class="tc-arrow">&rarr;</span> Перейти к '+warnInfo.deadlineDay+' '+MONTHS_FULL_GEN[tcMonth-1]+' ('+WEEKDAYS_SHORT[wdlDate.getDay()]+')</button>';
+    }else{
+      h+='<div class="tc-hero-count zero">0 отчётов</div>';
+      h+='<div class="tc-hero-status">'+(isActiveToday?'На сегодня сроков сдачи нет':'Нет сроков сдачи на эту дату')+'</div>';
+      if(nextDl){
+        var nlDate=new Date(tcYear,tcMonth-1,nextDl);
+        h+='<button class="tc-next-btn" id="tcNextBtn" data-nd="'+nextDl+'"><span class="tc-arrow">&rarr;</span> Ближайший срок: '+nextDl+' '+MONTHS_FULL_GEN[tcMonth-1]+' ('+WEEKDAYS_SHORT[nlDate.getDay()]+')</button>';
+      }
+    }
+  }else{
+    h+='<div class="tc-hero-count has-tax">'+gc+' '+(gc===1?'обязательство':gc<5?'обязательства':'обязательств')+'</div>';
+    h+=tcTaxListHtml();
+  }
+
+  h+='</div>';/* /tc-hero-list-wrap */
+  h+='</div>';/* /tc-hero-inner */
+  h+='</div>';/* /tc-hero */
+
+  /* Build warning days (N days before each deadline, using per-event remind values) */
+  var warnDays={};
+  var deadlineRemind={};
+  for(var eri=0;eri<events.length;eri++){
+    var erDay=events[eri].day;
+    var erRemind=events[eri].remind||5;
+    if(!deadlineRemind[erDay]||deadlineRemind[erDay]<erRemind)deadlineRemind[erDay]=erRemind;
+  }
+  for(var wd2 in deadlineRemind){
+    var dlDay=parseInt(wd2);
+    var maxWarn=deadlineRemind[wd2];
+    for(var wb=1;wb<=maxWarn;wb++){var wDay=dlDay-wb;if(wDay>=1&&!deadlineDays[wDay])warnDays[wDay]=true;}
+  }
+
+  /* === DAY STRIP (bottom) === */
+  h+='<div class="tc-day-strip-wrap">';
+  h+='<div class="tc-strip-rel"><div class="tc-fade-l"></div><div class="tc-fade-r"></div><div class="tc-day-strip tc-hide-scroll" id="tcDayStrip">';
+  for(var d=1;d<=daysInMonth;d++){
+    var date=new Date(tcYear,tcMonth-1,d);
+    var wd=WEEKDAYS_SHORT[date.getDay()];
+    var isToday=d===todayDay;
+    var hasDl=!!deadlineDays[d];
+    var isWarn=!!warnDays[d];
+    var isSel=d===activeDay;
+    var isPast=isCurrentMonth&&todayDay&&d<todayDay&&!isToday;
+    var isWe=date.getDay()===0||date.getDay()===6;
+    var cls='tc-day-cell';
+    if(isToday)cls+=' tc-today';
+    if(isSel)cls+=' tc-selected';
+    if(isPast)cls+=' tc-past';
+    if(hasDl)cls+=' tc-has-dl';
+    else if(isWarn&&!isPast)cls+=' tc-warn';
+    h+='<div class="'+cls+'" data-tcday="'+d+'"><span class="tc-wd'+(isWe?' tc-we':'')+'">'+wd+'</span><span class="tc-dn">'+d+'</span><div class="tc-dot"></div></div>';
+  }
+  h+='</div></div></div>';
+
+  document.getElementById('tcCalendarRoot').innerHTML=h;
+  /* Ensure shared tooltip exists */
+  if(!document.getElementById('tcPrevTip')){
+    var tipEl=document.createElement('div');
+    tipEl.id='tcPrevTip';
+    tipEl.className='tc-ti-tip-fixed';
+    tipEl.textContent='За предыдущий период. Оплата производится за предыдущий отчётный период. Например, в апреле вы платите за март.';
+    document.body.appendChild(tipEl);
+  }
+  tcBindEvents();
+  tcScrollToDay(activeDay);
+}
+
+function tcBindEvents(){
+  document.querySelectorAll('.tc-mc').forEach(function(btn){
+    btn.addEventListener('click',function(){tcMonth=parseInt(this.getAttribute('data-tcmonth'));tcSelectedDay=null;tcRender();});
+  });
+  document.querySelectorAll('.tc-day-cell').forEach(function(cell){
+    cell.addEventListener('click',function(){
+      var d=parseInt(this.getAttribute('data-tcday'));
+      if(d===tcSelectedDay)return;
+      tcSelectedDay=d;
+      tcAnimating=true;
+      tcRender();
+      setTimeout(function(){tcAnimating=false;},850);
+    });
+  });
+  /* Settings button */
+  var settingsToggle=document.getElementById('tcSettingsToggle');
+  if(settingsToggle)settingsToggle.addEventListener('click',function(){tcSettingsOpen=!tcSettingsOpen;tcFilterOpen=false;tcRender();});
+  /* Filter button */
+  var filterToggle=document.getElementById('tcFilterToggle');
+  if(filterToggle)filterToggle.addEventListener('click',function(){tcFilterOpen=!tcFilterOpen;tcSettingsOpen=false;tcRender();});
+  /* Close button (shared) */
+  var ovClose=document.getElementById('tcOvClose');
+  if(ovClose)ovClose.addEventListener('click',function(){tcFilterOpen=false;tcSettingsOpen=false;tcRender();});
+  /* Overlay backdrop click */
+  var overlay=document.getElementById('tcOverlay');
+  if(overlay)overlay.addEventListener('click',function(e){if(e.target===overlay){tcFilterOpen=false;tcSettingsOpen=false;tcRender();}});
+  /* Entity type pills in settings overlay */
+  document.querySelectorAll('.tc-ov-pill[data-tcet]').forEach(function(btn){
+    btn.addEventListener('click',function(){tcEntityType=this.getAttribute('data-tcet');tcSelectedDay=null;tcExcluded={};tcRender();});
+  });
+  /* Residency pills in settings overlay */
+  document.querySelectorAll('.tc-ov-pill[data-tcres]').forEach(function(btn){
+    btn.addEventListener('click',function(){tcNonResident=this.getAttribute('data-tcres')==='1';tcSelectedDay=null;tcRender();});
+  });
+  /* Filter tags */
+  document.querySelectorAll('.tc-filter-tag').forEach(function(tag){
+    tag.addEventListener('click',function(){var id=parseInt(this.getAttribute('data-tcfid'));if(tcExcluded[id])delete tcExcluded[id];else tcExcluded[id]=true;tcRender();});
+  });
+  var filterReset=document.getElementById('tcFilterReset');
+  if(filterReset)filterReset.addEventListener('click',function(){tcExcluded={};tcRender();});
+  var nextBtn=document.getElementById('tcNextBtn');
+  if(nextBtn)nextBtn.addEventListener('click',function(){tcSelectedDay=parseInt(this.getAttribute('data-nd'));tcRender();});
+  /* Tooltip for prev-period icons */
+  var tip=document.getElementById('tcPrevTip');
+  document.querySelectorAll('.tc-ti-form[data-tctip]').forEach(function(el){
+    el.addEventListener('mouseenter',function(){
+      tip.textContent=this.getAttribute('data-tctip');
+      tip.style.display='block';
+      var r=this.getBoundingClientRect();
+      var tw=tip.offsetWidth;
+      var left=r.right+6;
+      if(left+tw>window.innerWidth-8)left=r.left-tw-6;
+      if(left<8)left=8;
+      tip.style.left=left+'px';
+      tip.style.right='auto';
+      tip.style.top=r.top+'px';
+    });
+    el.addEventListener('mouseleave',function(){tip.style.display='none';});
+  });
+  tcInitDragScroll();
+}
+
+function tcScrollToDay(d){
+  var strip=document.getElementById('tcDayStrip');
+  if(!strip)return;
+  var el=strip.querySelector('[data-tcday="'+d+'"]');
+  if(!el)return;
+  var target=el.offsetLeft-strip.offsetWidth/2+el.offsetWidth/2;
+  strip.scrollLeft=target;
+}
+
+function tcInitDragScroll(){
+  var el=document.getElementById('tcDayStrip');
+  if(!el)return;
+  var isDown=false,startX=0,scrollL=0;
+  el.addEventListener('mousedown',function(e){isDown=true;startX=e.pageX-el.offsetLeft;scrollL=el.scrollLeft;el.style.cursor='grabbing';});
+  el.addEventListener('mouseleave',function(){isDown=false;el.style.cursor='grab';});
+  el.addEventListener('mouseup',function(){isDown=false;el.style.cursor='grab';});
+  el.addEventListener('mousemove',function(e){if(!isDown)return;e.preventDefault();var x=e.pageX-el.offsetLeft;el.scrollLeft=scrollL-(x-startX)*1.5;});
+  el.addEventListener('wheel',function(e){el.scrollLeft+=e.deltaY*1.2;e.preventDefault();},{passive:false});
+}
+
+function tcInit(){tcRender();}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',tcInit);}else{tcInit();}
+})();
+</script>
+</body>
+</html>

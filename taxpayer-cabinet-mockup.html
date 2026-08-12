@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Taxpayer Cabinet Mockup</title>
+  <style>
+    :root{--blue:#3492dd;--ink:#182848;--muted:#8998b6;--line:#e4e9f1;--soft:#dceafc}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#f5f5f5;color:var(--ink);font-family:Arial,Helvetica,sans-serif;font-size:13px}button{font:inherit;border:0;cursor:default}
+    .app{min-height:100vh;display:flex}.sidebar{width:212px;min-width:212px;background:#fff;display:flex;flex-direction:column;position:fixed;inset:0 auto 0 0;border-right:1px solid #edf0f5;z-index:5}
+    .brand{height:72px;display:grid;place-items:center;color:#ef1d29;font-weight:900;font-style:italic;font-size:25px;letter-spacing:-5px}.sidebar nav{padding:0 9px}
+    .nav-item{min-height:35px;display:grid;grid-template-columns:24px 1fr 14px;align-items:center;padding:6px 11px;border-radius:5px;color:#1c2d4f}.nav-item span{color:#9ba8c1;font-size:15px}.nav-item b{font-weight:500;font-size:12px}.nav-item i{font-style:normal;color:#8292b0}.nav-item.active{background:#f2f5fa;color:#358bf1}.nav-item.active span{color:#4f9af4}.module-label{font-size:9px;letter-spacing:1.3px;color:#909bb2;padding:12px 10px 8px}.contacts{margin:auto 16px 16px;height:33px;border:1px dashed #3998ff;background:#fff;color:#368ff7;border-radius:4px}
+    .main{margin-left:212px;min-width:0;width:calc(100% - 212px)}.topbar{height:74px;background:linear-gradient(110deg,#3f84d2,#0fcce1,#358fd8);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:0 28px 0 36px}.toplinks{display:flex;gap:27px;align-items:center;white-space:nowrap;font-weight:600;font-size:12px}.account{display:flex;align-items:center;gap:10px;min-width:300px;justify-content:flex-end}.account>b{padding:11px 9px;background:#60bbea;border-radius:8px}.account div{max-width:220px}.account strong,.account small{display:block;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .welcome{height:124px;background:linear-gradient(110deg,#3a87d8,#10cadf,#3891d8);color:white;padding:13px 22px 22px 24px;display:flex;justify-content:space-between;align-items:flex-start}.welcome h1{font-size:19px;margin:0 0 7px;font-weight:600}.welcome p{margin:0;font-size:12px}.rating{background:#72c6e8;padding:5px 9px;border-radius:3px}.welcome button{color:#328afa;background:white;padding:10px 16px;border-radius:6px}
+    .dashboard{display:grid;grid-template-columns:535px 1fr;gap:15px;margin-top:-39px;padding:0 22px 22px 24px}.panel{border-radius:10px;background:#fff;box-shadow:0 7px 20px rgba(32,56,91,.04)}
+    .quick{background:#dfeafa;padding:24px;min-height:786px}.quick>h2{text-align:center;font-size:14px;margin:0 0 11px}.shortcut-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px 15px}.shortcut{min-height:115px;background:#fff;border-radius:5px;padding:15px 16px}.shortcut.wide{grid-column:1/-1;min-height:99px}.shortcut-icon{color:#368ff4;font-weight:800;font-size:18px;line-height:18px}.shortcut h3{font-size:12px;margin:3px 0 6px;font-weight:500}.shortcut p{font-size:10px;color:#919db9;line-height:1.6;margin:0}
+    .right{display:flex;flex-direction:column;gap:26px}.balance{padding:12px 13px 13px}.balance-head{height:50px;background:#cfe2fb;border-radius:5px;display:flex;align-items:center;justify-content:space-between;padding-left:12px}.balance-head h2{font-size:16px;margin:0}.balance-head h2 span{color:#3b91f1;font-size:21px}.balance-head button{background:#3c95f4;color:#fff;padding:11px 20px;border-radius:6px}.balance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:15px}.balance-grid article{height:99px;position:relative;padding:9px;background:linear-gradient(115deg,#c8e0ff,#d8e9ff);border-radius:5px;overflow:hidden}.balance-grid article:after{content:"₢";position:absolute;right:14px;top:3px;color:rgba(255,255,255,.55);font-size:74px}.round-icon{width:38px;height:38px;border-radius:50%;background:#a9d2ff;color:#398fee;display:grid;place-items:center;font-size:18px}.balance-grid i{position:absolute;right:10px;top:10px;font-style:normal;color:#1b304c}.balance-grid strong,.balance-grid small{display:block;position:relative;z-index:1}.balance-grid strong{font-size:21px;margin-top:3px}.balance-grid small{font-size:10px}
+    .obligations{overflow:hidden}.section-head{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line)}.section-head h2{font-size:15px;margin:0}.section-head span{font-size:10px;color:#61708c}.ob-row{display:grid;grid-template-columns:120px minmax(280px,1fr) 70px 70px 32px;gap:10px;align-items:center;min-height:59px;padding:8px 18px;border-bottom:1px solid var(--line);font-size:11px}.ob-row strong,.ob-row small{display:block}.ob-row strong{font-weight:500}.ob-row small{color:#72819e;font-size:9px;margin-top:5px}.ob-row>div:nth-last-of-type(-n+2){text-align:center}.ob-row button{width:30px;height:30px;background:#f1f5fa;border-radius:8px;color:#6a7a96;font-size:18px}.more{text-align:right;background:#f0f9ff;color:#388bea;padding:8px 12px;font-size:9px}
+    .bottom-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.bottom-cards article{height:147px;background:#dceafd;border-radius:7px;padding:22px 24px;position:relative;overflow:hidden}.bottom-cards article.payments{background:#f7dfbd}.bottom-cards h2{font-size:15px;margin:0 0 7px}.bottom-cards p{font-size:11px;line-height:1.5;color:#70809f;max-width:75%;margin:0}.bottom-cards button{position:absolute;left:24px;bottom:22px;background:#3c4d70;color:#fff;border-radius:4px;padding:8px 14px;font-size:10px;font-weight:bold}.art{position:absolute;right:8px;bottom:10px;font-size:38px;color:#263a5e;letter-spacing:-11px}
+    @media(max-width:1500px){.toplinks{gap:13px}.toplinks span:nth-child(n+5){display:none}.account{min-width:220px}.dashboard{grid-template-columns:430px minmax(0,1fr)}.ob-row{grid-template-columns:105px minmax(190px,1fr) 55px 65px 30px}.quick{padding:18px}.bottom-cards p{max-width:100%}.art{opacity:.25}}
+    @media(max-width:980px){.sidebar{position:static;width:190px;min-width:190px}.main{margin-left:0;width:calc(100% - 190px)}.toplinks span:nth-child(n+3){display:none}.account{min-width:210px}.dashboard{grid-template-columns:1fr}.quick{min-height:auto}.right{gap:16px}.welcome{height:auto;min-height:120px}.bottom-cards{grid-template-columns:1fr 1fr}.payments{grid-column:1/-1}}
+    @media(max-width:700px){.sidebar{display:none}.main{width:100%}.topbar{padding:0 14px}.account div,.toplinks span:nth-child(n+2){display:none}.welcome{padding:18px 14px 55px}.welcome button{display:none}.dashboard{padding:0 10px 16px;margin-top:-35px}.quick{padding:15px}.shortcut-grid,.balance-grid,.bottom-cards{grid-template-columns:1fr}.shortcut.wide,.payments{grid-column:auto}.ob-row{grid-template-columns:90px 1fr 50px}.ob-row>div:nth-of-type(3),.ob-row>button{display:none}.bottom-cards article{height:140px}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">ЭК</div>
+    <nav>
+      <div class="nav-item active"><span>▦</span><b>Главная</b><i></i></div>
+      <div class="nav-item"><span>▰</span><b>Уплата налогов</b><i></i></div>
+      <div class="nav-item"><span>◆</span><b>Переписка с ГНС</b><i></i></div>
+      <div class="nav-item"><span>◉</span><b>Мой рейтинг</b><i>⌄</i></div>
+      <div class="nav-item"><span>◷</span><b>Патент</b><i></i></div>
+      <div class="module-label">МОДУЛИ</div>
+      <div class="nav-item"><span>🛒</span><b>ЭТТН</b><i>⌄</i></div>
+      <div class="nav-item"><span>▣</span><b>Е-отчеты</b><i>⌄</i></div>
+      <div class="nav-item"><span>●</span><b>Сервисы</b><i></i></div>
+      <div class="nav-item"><span>◆</span><b>Филиалы</b><i></i></div>
+      <div class="nav-item"><span>▥</span><b>Имущество</b><i>⌄</i></div>
+      <div class="nav-item"><span>●</span><b>Реестр наемных работников</b><i>⌄</i></div>
+      <div class="nav-item"><span>◉</span><b>Работа с ЕАЭС</b><i>⌄</i></div>
+      <div class="nav-item"><span>▰</span><b>СА ККМ</b><i></i></div>
+    </nav>
+    <button class="contacts">Контакты</button>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="toplinks">
+        <span>▥ &nbsp;ЭСФ</span><span>▣ &nbsp;Электронный патент</span><span>▥ &nbsp;Каталог товаров</span>
+        <span>●● &nbsp;Помощник по заполнению 161 формы</span><span>●● &nbsp;Помощник по заполнению 062 формы</span><span>▥ &nbsp;ЭСФ 2.0</span>
+      </div>
+      <div class="account"><span>♟</span><b>ФЛ</b><div><strong>ОБЩЕСТВО С ОГРАНИЧЕННОЙ ОТВЕТС...</strong><small>ИНН: 12345678901234</small></div><span>↪</span></div>
+    </header>
+
+    <section class="welcome">
+      <div><h1>Добро пожаловать, Общество с ограниченной ответственностью</h1><p>ИНН: 12345678901234 &nbsp;&nbsp; ИНН организации: 12345678901234 &nbsp;&nbsp; Ваш рейтинг: <span class="rating">★★★★★ &nbsp; Без рейтинга</span></p></div>
+      <button>Перейти в профиль</button>
+    </section>
+
+    <div class="dashboard">
+      <section class="quick panel">
+        <h2>Быстрый доступ к разделам</h2>
+        <div class="shortcut-grid">
+          <article class="shortcut wide"><div class="shortcut-icon">↗</div><h3>Перерегистрация НП</h3><p>Предназначен для изменения района, налогового режима, реквизитов и добавления/изменения видов деятельности</p></article>
+          <article class="shortcut"><div class="shortcut-icon">⌕</div><h3>Проверка задолженностей</h3><p>Проверка и оплата задолженности по налогам и страховым взносам</p></article>
+          <article class="shortcut"><div class="shortcut-icon">≋</div><h3>Выверка расчетов</h3><p>Отчет по проверке расчетов налогоплательщика на конкретный период времени</p></article>
+          <article class="shortcut"><div class="shortcut-icon">◈</div><h3>Запрос справок</h3><p>Раздел по работе со справками</p></article>
+          <article class="shortcut"><div class="shortcut-icon">▤</div><h3>Журнал справок</h3><p>Раздел по работе со справками</p></article>
+          <article class="shortcut"><div class="shortcut-icon">↥</div><h3>Подача Е-отчетов</h3><p>Подача Е-отчетов</p></article>
+          <article class="shortcut"><div class="shortcut-icon">▰</div><h3>Журнал Е-отчетов</h3><p>Журнал Е-отчетов</p></article>
+          <article class="shortcut"><div class="shortcut-icon">◯</div><h3>ЭТТН:Реализация-Оптовая</h3><p>Создание новых ЭТТН</p></article>
+          <article class="shortcut"><div class="shortcut-icon">◆</div><h3>ЕАЭС Подача заявления</h3><p>Заявление о ввозе товаров и уплате косвенных налогов</p></article>
+          <article class="shortcut"><div class="shortcut-icon">◆</div><h3>Взаимодействие с банками</h3><p>Уведомление об открытии / закрытии банковского счета</p></article>
+        </div>
+      </section>
+
+      <div class="right">
+        <section class="balance panel">
+          <div class="balance-head"><h2><span>▰</span> Пополнить баланс ЕНС</h2><button>Пополнить</button></div>
+          <div class="balance-grid">
+            <article><span class="round-icon">▰</span><i>↗</i><strong>0,00 с.</strong><small>Баланс по счету</small></article>
+            <article><span class="round-icon">⌁</span><i>↗</i><strong>-759 950,62 с.</strong><small>Задолженность</small></article>
+            <article><span class="round-icon">✣</span><i>↗</i><strong>-27 826,68 с.</strong><small>Предстоящие платежи</small></article>
+          </div>
+        </section>
+
+        <section class="obligations panel">
+          <div class="section-head"><h2>Налоговые обязательства</h2><span>Кол-во 5</span></div>
+          <div class="ob-row"><div><strong>01.03.2026</strong><small>Дата налогового обяз.</small></div><div><strong>1720 - Налог на имущество на нежилое здание и помещение</strong><small>Код и вид налога</small></div><div><strong>003</strong><small>Район</small></div><div><strong>5404.88</strong><small>Сумма</small></div><button>›</button></div>
+          <div class="ob-row"><div><strong>01.06.2026</strong><small>Дата налогового обяз.</small></div><div><strong>1720 - Налог на имущество на нежилое здание и помещение</strong><small>Код и вид налога</small></div><div><strong>003</strong><small>Район</small></div><div><strong>5404.88</strong><small>Сумма</small></div><button>›</button></div>
+          <div class="ob-row"><div><strong>01.09.2026</strong><small>Дата налогового обяз.</small></div><div><strong>1720 - Налог на имущество на нежилое здание и помещение</strong><small>Код и вид налога</small></div><div><strong>003</strong><small>Район</small></div><div><strong>5404.88</strong><small>Сумма</small></div><button>›</button></div>
+          <div class="ob-row"><div><strong>01.12.2026</strong><small>Дата налогового обяз.</small></div><div><strong>1720 - Налог на имущество на нежилое здание и помещение</strong><small>Код и вид налога</small></div><div><strong>003</strong><small>Район</small></div><div><strong>5404.88</strong><small>Сумма</small></div><button>›</button></div>
+          <div class="ob-row"><div><strong>01.09.2026</strong><small>Дата налогового обяз.</small></div><div><strong>5070 - Земельный налог за пользование приусадебными участками</strong><small>Код и вид налога</small></div><div><strong>030</strong><small>Район</small></div><div><strong>896.70</strong><small>Сумма</small></div><button>›</button></div>
+          <div class="more">Подробнее</div>
+        </section>
+
+        <section class="bottom-cards">
+          <article><h2>Недвижимое имущество</h2><p>Перечень недвижимого имущества, принадлежащего указанному лицу</p><button>Перейти</button><div class="art">⌂⌂</div></article>
+          <article><h2>Движимое имущество</h2><p>Перечень движимого имущества, принадлежащего указанному лицу</p><button>Перейти</button><div class="art">▱🚗</div></article>
+          <article class="payments"><h2>История платежей</h2><p>Подробные сведения о транзакциях</p><button>Перейти</button><div class="art">▤◎</div></article>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
