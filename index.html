@@ -554,10 +554,10 @@ html,body{font-size:15px}
         <div class="journal-group-control">
           <span class="journal-nav-label">Направление</span>
           <div class="journal-group-switch" id="journalGroup" role="tablist" aria-label="Выберите направление журнала">
-            <button type="button" class="active" data-journal-group="main">Основное</button>
+            <button type="button" class="active" data-journal-group="main">Отчеты и Справки</button>
             <button type="button" data-journal-group="correspondence">Переписка ГНС</button>
             <button type="button" data-journal-group="notifications">Уведомления</button>
-            <span class="journal-disabled-wrap" data-tooltip="Нет данного типа отчетов."><button type="button" data-journal-group="reports" disabled aria-disabled="true" title="Нет данного типа отчетов.">Электронные отчеты</button></span>
+            <span class="journal-disabled-wrap" data-tooltip="Нет данного типа отчетов."><button type="button" data-journal-group="reports" disabled aria-disabled="true" title="Нет данного типа отчетов.">Старые электронные отчеты</button></span>
           </div>
         </div>
       </div>
@@ -591,12 +591,12 @@ var JOURNAL_GROUPS={
   main:[
     'Справка об отсутствии/наличии задолженности по налогам и страховым взносам',
     'Справка о налоговом статусе (резидентстве) Кыргызской Республики',
-    'Зачет/возврат',
     'Отчеты',
     'Продление отчетности'
   ],
   correspondence:[
     'Жалобы',
+    'Зачет / Возврат',
     {label:'О признании задолженности',disabled:true},
     {label:'О признании задолженности (льготный режим)',disabled:true}
   ],
